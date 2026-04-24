@@ -176,6 +176,9 @@ void sim(int argc, char **argv){
     double error_thresh = 5.0; //volts. corresponds to 0.1% error with 5kV
 
 
+    ofstream osteps(run + "trajectory_steps.dat");
+    osteps << "# iteration    total_steps\n";
+
     ofstream opot_iter_z(run + "potential_radial_z_all.dat");  //open z radial pot datastream
     opot_iter_z << "# iteration    r (m)    potential (V)\n";
 
@@ -197,6 +200,7 @@ void sim(int argc, char **argv){
         pdb.clear();
         add_particles(pdb, geom);
         pdb.iterate_trajectories(scharge, efield, bfield);
+        osteps << setw(10) << j << " " << setw(20) << pdb.get_statistics().sum_steps() << "\n";
         conv.evaluate_iteration();
 
         for (int32_t c = -(int32_t)cz; c < (int32_t)geom.size(2) - (int32_t)cz; c++) { //export z radial pot to .dat for this iteration
@@ -222,6 +226,7 @@ void sim(int argc, char **argv){
         epot_old = epot;
         j++;
     }
+    osteps.close();
     opot_iter_z.close(); //close data streams
     opot_iter_y.close();
     opot_iter_x.close();
