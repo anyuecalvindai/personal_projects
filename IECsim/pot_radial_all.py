@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
-run = 'run4/'
+run = 'run7/'
 plots = run + 'plots/'
 
 axes = ['x', 'y', 'z']

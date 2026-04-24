@@ -1,11 +1,13 @@
 \documentclass[a4paper,titlepage]{article}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath}
-
+\usepackage{glossaries}
 \usepackage[T1]{fontenc}
 \usepackage{geometry}
 \usepackage{comment}
 \usepackage[utf8]{inputenc}
+%\usepackage{xltabular}
+\usepackage{ragged2e}
 %\usepackage[nonumberlist]{glossaries}
 \usepackage[
 backend=biber,
@@ -18,33 +20,50 @@ style=authoryear,
 \DeclareDelimFormat{nameyeardelim}{\addspace}
 \renewcommand*{\mkbibparens}[1]{\mkbibbrackets{#1}}
 \let\cite\parencite 
+\graphicspath{{figures/}}
 
 
 
+% glossary setup
+\makeglossaries
+\setglossarystyle{list}
+\renewcommand*{\glsnamefont}[1]{\textnormal{#1}}
 
-%glossary setup
-%\makeglossaries
-%\setglossarystyle{list}
-%\renewcommand*{\glsnamefont}[1]{\textnormal{#1}}
-%\setlength{\glsnamewidth}{\linewidth}
+
+\newglossaryentry{divergence}{
+    name={Divergence Operator: $\nabla \cdot$},
+    description={A 3-D vector calculus operator. Mathematically it computes the 
+    sum of the partial derivatives of a 3-dimensional vector field $F$ at a point:
+    \begin{equation}
+        \nabla \cdot F(x,y,z) = \frac{\partial{F_x}}{\partial{x}} + 
+        \frac{\partial{F_y}}{\partial{y}} + \frac{\partial{F_z}}{\partial{z}}
+    \end{equation}
+    Conceptually, it measures how much the field acts as an outward source or 
+    inward sink of field lines at a point.}
+}
+
+\newglossaryentry{$epsilon naught$}{
+    name = {$\epsilon_0$},
+    description = {Permittivity of free space \\ $8.8541878188 \times 10^{-12}$ $\mathrm{kg^{-1}\,m^{-3}\,s^{4}\,A^{2}}$}
+}
 
 
 
 %add new entries here. when using them in text, use \gls
 
-%\newglossaryentry{Coulomb Collision}{
-%name=Coulomb Collision
-%description = {}
-%t}
+% \newglossaryentry{Coulomb Collision}{
+% name=Coulomb Collision
+% description = {}
+% }
 
-%\newglossaryentry{Torr}{
-    %name=Torr,
-    %description={One of the many pressure units in fusion science. 1 Torr is defined as $\frac{1}{760}$ of 1 %standard atmosphere (101325kPa)}
-%}
-%\newglossaryentry{Divergence}{
-%    name = $\nabla \cdot f$,
-%    description = {Divergence operator. A vector calculus operator on a vector field $f$ }
-%}
+% \newglossaryentry{Torr}{
+%     name=Torr,
+%     description={One of the many pressure units in fusion science. 1 Torr is defined as $\frac{1}{760}$ of 1 standard atmosphere (101325kPa)}
+% }
+% \newglossaryentry{Divergence}{
+%     name = $\nabla \cdot f$,
+%     description = {Divergence operator. A vector calculus operator on a vector field $f$ }
+% }
 %\newglossaryentry{E-field}{
 %    name = $\vec{E}$,
 %    description = {Electric field vector}
@@ -65,14 +84,13 @@ style=authoryear,
 
 
 
-
 % Set different margins for each side
 \geometry{top=2cm, bottom=2cm, left=2cm, right=2cm}
 
 
 
 %title page
-\title{Desktop Star in a Jar: A study of inertial electrostatic confinement fusion devices}
+\title{Desktop Star in a Jar: An evaluation of inertial electrostatic confinement fusion devices as switchable neutron sources}
 
 
 \author{Calvin Dai}
@@ -84,38 +102,52 @@ style=authoryear,
 \tableofcontents
 \newpage
 \newpage
+\printglossaries
 \begin{flushleft}
-
-\section{Definitions and Symbols}
-
-
 
 \section{Introduction}
 \label{intro}
 [NOTE: NOTES ON EXPERIMENT AT THE END ARE PLANS. NOT YET DONE]
+[condense theory vs documentation of device we have built]
+[proof of concept: evaluation]
+[review and conclusion: initial aim had to be curtailed: neutrons, xrays, voltage etc]
+[maxwell-boltzmann distribution: neglect all quantum effects. generalisation of boltzmann distribution for ideal gases.]
 
-The Inertial Electrostatic Confinement (IEC) device is a unique type of fusion reactor. Conceived and developed in the 1950s and 60s by Philo T. Farnsworth in correspondence with Robert L. Hirsch(also known for his invention of the electronic television), they are unlike the much more famous and expensive tokamaks and inertial confinement systems which use magnetic fields and lasers respectively to confine fusion plasmas. Instead, IEC devices use electric fields to accelerate and confine fuel ions. They can be built for a fraction of the cost of a tokamak, with many universities and hobbyists being able to build relatively small and inexpensive units in a short period of time. \newline
+The Inertial Electrostatic Confinement (IEC) device is a unique type of fusion reactor. First patented by Philo T. Farnsworth (after collaboration with R.L. Hirsch in 1967 \cite{hirsch_1967_inertialelectrostatic}) in 1968 \cite{farnsworth_1968_method}, they are a far cry from the more famous and expensive tokamaks and inertial confinement systems which use magnetic fields and lasers respectively to confine and heat plasmas to thermonuclear temperatures. Physically, they are much smaller and compact devices and they use electric fields from wire grids to accelerate and confine fuel ions. They can be built for a fraction of the cost of a tokamak, with many universities and hobbyists being able to build relatively small and inexpensive units in a short period of time. It seemed to offer a potentially much cheaper and physically compact route to creating a net-positive power output fusion reactor - perhaps explaining Farnsworth's early patent - and a small group of researchers jumped to advance this nascent technology. \newline
 
-Despite this financial advantage, analyses have concluded that IEC - as a physical concept - faces significant challenges before it can compete with tokamaks and laser confinement projects as viable sources of fusion power.  Inherent inefficiencies in the confinement scheme severely restrict their fusion reaction rates, which are several orders of magnitude below magnetic and laser confinement results. \cite{rider_1995_a}\cite{miley_2013_inertial} \newline
+Despite this financial advantage, theoretical analyses have concluded that the concept of IEC faces significant challenges before it can compete with tokamaks and laser confinement as theoretically viable sources of fusion power. Inherent inefficiencies in the confinement scheme severely restrict their fusion reaction rates, which are currently several orders of magnitude below magnetic and laser confinement results. \cite{rider_1995_a}\cite{miley_2013_inertial}. Government funding for IEC research is almost non-existent by comparison with its more powerful cousins \cite{miley_2013_inertial}, and therefore present research is slow and somewhat limited in scale. Major IEC research groups were based at the University of Wisconsin-Madison and the University of Illinois in the United States, and at the Tokyo Institute of Technology in Japan (which holds the record for highest recorded fusion rate in an IEC device) along with others. \cite{janphilippwulfkhler_2025_an}. 
+Early simulations were of a much lower quality than ideal - i.e. typically only 1-D, with significantly reduced resolution, and extremely idealised assumptions to save computational resources. 
 
-Present fusion results however allow IEC devices to occupy a useful niche in the form of highly effective neutron sources, with wide-ranging potential applications in research and industry. It also offers a platform for the study of plasma glow discharges, which are unique in that they are not thermonuclear, or, they strongly do not follow a Maxwell-Boltzmann energy distribution unlike many of the plasmas described in current plasma and fusion plasma literature.\newline 
-%Unlike these plasmas, the IEC plasma is more closely resemblent (and should ideally be) of beam behaviour; an often-used alternative name is "spherically convergent ion focus" or "beam"\cite{thorson_1997_convergence} 
+Present fusion rate results have suggested that IEC devices could be used as compact, trivially switchable neutron sources, with wide-ranging potential applications in research and industry. Limited computational research has also been conducted on their feasibility as low-power ionic thrusters in spacecraft by extracting the high velocity ions, with few but extremely limited proof-of-concept results. \cite{herdrich_2013_kinetic}\cite{chan_2018_breakthrough} \newline
+
+This report will evaluate the suitability of small IEC devices as neutron sources. This report presents a simplified but compact demonstration. This was built using a significantly reduced configuration of the design to comply with institution safety regulations. The system is not currently capable of fusion due to voltage safety restrictions, vacuum pump limitations, lack of a fuel source, and lack of a wire grid. A spectroscopic analysis of the glow discharge plasma is presented to establish the present discharge regime and to determine the limiting factors of the system before proceeding to fusor-level discharges. Unlike most research devices built with custom spherical vacuum chambers for electric field uniformity, this devices uses an off-the-shelf tee-shaped chamber due to its increased availability, lower cost, and more compact. \newline
+
+A simulation of an idealised system was also conducted to give a low-order description how to improve the setup to a neutron producing device with previously established benchmark parameters by experimenting with different chamber and grid geometries and the voltage and current inputs to the device. This was written in C++ using IBSimu, an open-source library designed originally for plasma extraction problems \cite{tkalvas_2010_scpibsimuscp}, applied here for the first time to an IEC problem. A self-consistent Vlasov-Poisson iteration was used to solve for the electrostatic potential profile in the device, before using a particle-in-cell (PIC) method to time-step the particle trajectories and to observe the recirculation patterns of the device. 
+
+\section{Review of neutrons and their present use cases}
+
+The neutral charge of the neutron lends it to be a uniquely useful tool in many industrial and research applications. The fact they are unperturbed by electromagnetic forces means they can easily penetrate very deep into materials, acting as extremely good microscopic, non-destructive probes of the environment at the atomic level.  We can know "where the atoms are, how they move, how they interact, and how they are magnetic," hence one of the reasons why its discoverer, James Chadwick, won the Nobel Prize in Physics in 1935. \cite{zakalek_2025_neutron} 
+
+For example, when samples are irradiated with beams of them, they can be absorbed by nuclei to cause them to become radioactive. The decay products, emitted particles and radiation (often high energy gamma rays) from the nuclei can be analyzed and the concentrations of different elements can be determined with very high precision. This is known as Neutron Activation Analysis (NAA) or Prompt Gamma Neutron Activation Analysis when the gamma rays are analysed (PGNAA) \cite{iaea_2012_neutron}, and is commonly utilised in mining and petroleum industries to locate deposits of material, and for quality control of samples. \cite{nrodrguez_2015_determination} Material analysis is often conducted next to nuclear fission research reactors, which provide high neutron production rates up to $10^{14} \mathrm{ns}^{-1}$. The most common mobile sources are often isotopic, such as ${}^{252}\mathrm{Cf}$ and ${}^{241}\mathrm{Am}$/Be. Their main advantage is their compact, portable size, with typical samples being cylinders of less than 0.5 inches in diameter and 1 inch in length. \cite{qsaglobalinc_2025_cf252}
+
+Neutrons are also produced in nuclear fusion reactions, which makes their detection critically important to determine the fusion rate and therefore estimates for power output during reactor test runs (see \ref{fusion_reactions}). External sources of known and approximately constant flux must therefore be used to calibrate these detectors to ensure subsequent measurements are accurate. These detectors are also very small - the detectors at ITER are roughly cylinder shapes of only 6 or 12 mm in diameter.\cite{ishikawa_2008_design} Thus isotopic sources (${}^{252}\mathrm{Cf}$ and ${}^{241}\mathrm{Am}$/Be) are also used here due to their compact size and portability, allowing them to be easily and accurately manoeuvred around the reactors using robots.\cite{snoj_2012_calculations} 
+
+In industry, they are used to produce vital radioisotopes for tracing and diagnosing cancer, used in tens of thousands of daily procedures \cite{tc99mmo99ncib}. However, this process requires high fluxes so products have a high enough specific activity. In fact, radionuclides are almost exclusively produced from fission reactor neutrons, with fluxes upwards of $10^{13} \mathrm{n/s}$. \cite{elpezmelero_2024_production}
+
+These two types of sources are some of the most commonly used in industry and laboratory settings. However, both come with issues. Isotopes are "passive sources" and cannot be "turned off" and are therefore radioactivity hazards. Fluxes also deteriorate over time as they decay. For reactors, samples for analysis will also have to be moved to the reactor itself, perhaps taking long periods of time. This is therefore not suitable for samples that need to be analyzed quickly before they decay or change. They are also not commonly available across the world, with most of the world's operational reactors concentrated in developing or emerging countries.
+
+[insert map from IAEA: https://nucleus.iaea.org/rrdb/home]
 
 
-This paper presents a design of such a system capable of fusion, and an experimental analysis of a plasma that was generated using a significantly simplified configuration of the design to comply with institution safety regulations. The experimental configuration is not capable of fusion due to voltage safety restrictions, which therefore limits maximum ion energy.\newline 
 
-[PLANNED] Instead, the spectrogram of the plasma is analysed at different points along the plasma to investigate the ion velocity and density to estimate the potential profile and therefore the confinement characteristics of the device. 
-
-A simulation of the system [was] also conducted to validate the design and its results using IBSimu, an open source iterative Vlasov-Poisson ion optics library in C++ that allows for the calculation of space-charge effects from ion trajectories inside electric fields. [Model is in progress, plan is to verify experimental data from the spectrometers]
-
-
-\section{Theory}
+\section{IEC Theory}
 \label{theory}
 
 \subsection{General configuration of an IEC device}
 \label{general_config}
 
-IEC devices use two either spherically or cylindrically symmetrical wire grids to produce a uniform electric field. A negative high voltage - either pulsed or steady DC - is applied across the highly-transparent central cathode grid, whilst the outer grid is earthed so that a radially inward electric field is generated towards the cathode. 
+IEC devices use two either spherically or cylindrically symmetrical wire grids to produce a uniform electric field. A negative DC high voltage is applied across the highly-transparent central cathode grid, whilst the outer grid is earthed (0V) so that a radially inward electric field is generated towards the cathode, accelerating the ions to fusion-energies towards the centre of the grid. The grid's gaps focus the ions towards the centre and allows them to pass through and recirculate if they do not collide and fuse in the centre. This is perhaps analogous to (smooth, frictionless) skateboarders being pushed into a (smooth, frictionless) half-pipe, where the skateboarders are the ions and the half-pipe is the electrostatic potential gradient.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{iec_homer.jpg}
@@ -123,86 +155,67 @@ IEC devices use two either spherically or cylindrically symmetrical wire grids t
     \label{fig:iec_homer}
 \end{figure}
 
-These grids are suspended on insulated feed-through stalks in the centre of a vacuum chamber, which is pumped down to pressures close to $10^-7$ Torr ($10^-5 $Pa) \cite{miley_2013_inertial} to evacuate the chamber of contaminant air particles. Fuel gas - such as deuterium is then subsequently introduced, raising the chamber pressure to tens of millitorr ($\approx 1$ Pa) before the voltage across the cathode grid is raised to several tens of kilovolts to produce a plasma discharge. 
+These grids are genereally suspended on insulated feed-through stalks in the centre of a vacuum chamber. This is pumped down to pressures close to $10^-7$ Torr ($10^-5 $Pa) to evacuate the chamber of contaminant air particles. Fuel gas - such as deuterium - is then subsequently introduced, raising the chamber pressure to tens of milliTorr ($\approx 1$ Pa) before the voltage across the cathode grid is raised to several tens of kilovolts to produce a plasma discharge. \cite{miley_2013_inertial} 
 
-\section{Construction overview} [body needs restructuring: current structure makes no sense]
-\subsection{Vacuum}
-\subsection{Safety Considerations}
+
 
 \subsection{Plasma definition and characteristics}
 \label{plasma_def_char}
 
-\subsubsection{What is a plasma?}
-\label{wtf_is_a_plasma_eagle_noise}
-An ideal plasma is a "quasi-neutral gas of charged particles showing collective behaviour" \cite{gibbon_2014_introduction}. "Quasi-neutrality" means that although the plasma consists of non-neutral ions and electrons, the number density of positively charged ions and electrons approximately cancel out to locally balance. This can be expressed as: 
+An ideal plasma is a "quasi-neutral gas of charged particles showing collective behaviour" \cite{gibbon_2014_introduction}. "Quasi-neutrality" means that although the plasma consists of non-neutral ions and electrons, the number density of positively charged ions and electrons approximately cancel out to locally balance. 
 
-\begin{equation}
-n_e \simeq Zn_i 
-\end{equation}
+"Collective behaviour" is the idea that the plasma's behaviour is governed predominantly by long-range macroscopic electric and magnetic fields as opposed to microscopic electrostatic and magnetic interactions between neighbouring particles in the plasma caused by the motions of each individual particle and their effects on their neighbours. Therefore we can treat its behaviour as that of a whole entity, depending on the energy distribution of the particles. 
 
-"Collective behaviour" is the idea that the plasma's behaviour is governed predominantly by long-range macroscopic electric and magnetic fields as opposed to microscopic electrostatic and magnetic interactions between neighbouring particles in the plasma caused by the motions of each individual particle and their effects on their neighbours. Therefore we can treat its behaviour as that of a whole entity, depending on the energy distribution of the particles. If a plasma is in thermal equilibrium (i.e. described by a Maxwell-Boltzmann distribution), we can model them as fluids. 
+Collective behaviour makes the plasma an extremely good conductor of electricity as external fields can penetrate through them easily. Consequently, the interior of the plasma is shielded from internal electric fields of the individual particles. \cite{freidberg_2008_plasma}. This is called Debye shielding, which leads to the definition of the Debye length scale which can quantify the degree of collective effects and therefore plasma-like behaviour in an ionised gas. 
 
-This makes the plasma an extremely good conductor of electricity. This implies that the interior of the plasma is shielded from internal electric fields of the individual particles. \cite{freidberg_2008_plasma} \newline
-
-The shielding effect is known as Debye shielding, which consequently leads to the definition of the Debye length scale which can quantify the degree of collective effects and therefore plasma-like behaviour in an ionised gas. 
-
-If we place a test charge inside the ionized gas, this therefore produces a tiny perturbation in the charge density in an otherwise quasi-neutral environment. As a result of Gauss' law for electrostatics:
+If we place a positive test charge inside the ionised gas, this produces a small perturbation in the charge density in an otherwise quasi-neutral environment. As a result of Gauss' law for electrostatics:
 
 \begin{equation}
 \nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0}
 \end{equation}
-a net electric field arises, exerting a force on neighbouring charges.
+where $\nabla \cdot$ is the \gls{divergence} operator, a net electric field arises, exerting a force on neighbouring charges.
 
-Like charged particles (ions) are repelled away and oppositely charged particles (electrons) are attracted towards the test charge. Since the mass of an electron is much smaller than the mass of an ion, on the timescale of the electron's motion we can assume that the ions are motionless.
+Like-charged particles (ions) are repelled away and oppositely charged particles (electrons) are attracted towards the test charge. Since the mass of an electron is much smaller than the mass of an ion, on the timescale of the electron's motion we can assume that the ions are motionless.
 
-As they accelerate towards the test charge, eventually the $\vec{E}$ = 0. However, due to the inertia of the charges they overshoot to form another region of net charge density, and this oscillatory pattern repeats, known as a Langmuir wave. The frequency of these oscillations is given by the Bohm-Gross dispersion relation, which can be expressed as:
+% As they accelerate towards the test charge, eventually the $\vec{E}$ = 0. However, due to the inertia of the charges they overshoot to form another region of net charge density, and this oscillatory pattern repeats, known as a Langmuir wave. The frequency of these oscillations is given by the Bohm-Gross dispersion relation, which can be expressed as:
 
-\begin{equation}
-    \omega=\sqrt{\frac{e^2n_{0}}{\epsilon_0 m_e} + 3k^2 v_{th, e}^2}
-\end{equation}
+% \begin{equation}
+%     \omega=\sqrt{\frac{e^2n_{0}}{\epsilon_0 m_e} + 3k^2 v_{th, e}^2}
+% \end{equation}
 
-where k is the wave number and $n_0$ is the initial number density of electrons before the test charge is introduced. The first term is the fundamental plasma frequency, derived from a fluid model of the oscillations in a cold plasma, and the second term is a thermal correction factor, generalising the expression for a finite-temperature plasma \cite{mcgreivy_2024_general}. \newline
+% where k is the wave number and $n_0$ is the initial number density of electrons before the test charge is introduced. The first term is the fundamental plasma frequency, derived from a fluid model of the oscillations in a cold plasma, and the second term is a thermal correction factor, generalising the expression for a finite-temperature plasma \cite{mcgreivy_2024_general}. \newline
 
-To further justify the stationary condition of the ions, we can similarly compute the (singularly charged) ion frequency of oscillation, replacing $m_e$ with $m_i$. If we ignore the thermal correction factor (i.e. consider a cold plasma) the ratio of $\omega_e$ to $\omega_i$ is therefore $\sqrt{\frac{m_i}{m_e}}$. For fuel plasmas such as deuterium where Z = 1, this ratio is ~ 60. On the timescale of an electron's oscillation, an ion is therefore approximately stationary. 
+% To further justify the stationary condition of the ions, we can similarly compute the (singularly charged) ion frequency of oscillation, replacing $m_e$ with $m_i$. If we ignore the thermal correction factor (i.e. consider a cold plasma) the ratio of $\omega_e$ to $\omega_i$ is therefore $\sqrt{\frac{m_i}{m_e}}$. For fuel plasmas such as deuterium where Z = 1, this ratio is ~ 60. On the timescale of an electron's oscillation, an ion is therefore approximately stationary. 
 
-As the electrons keep oscillating, they gradually thermalise to equilibrium due to energy losses from small-angle Coulomb scattering between the ions.
-The overall effect is that the extra potential from the test charge is equalised and the plasma maintains its quasi-neutrality. 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\linewidth]{debye shielding.png}
-    \caption{Illustration of Debye Shielding \cite{Coulomb_thrusting_debye}}
-    \label{fig:debyeshielding}
-\end{figure}
+% As the electrons keep oscillating, they gradually thermalise to equilibrium due to energy losses from small-angle Coulomb scattering between the ions.
+% The overall effect is that the extra potential from the test charge is equalised and the plasma maintains its quasi-neutrality. 
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.5\linewidth]{debye shielding.png}
+%     \caption{Illustration of Debye Shielding \cite{Coulomb_thrusting_debye}}
+%     \label{fig:debyeshielding}
+% \end{figure}
 
-Once at equilibrium , the Debye length can be interpreted as the distance over which the electric potential from the test charge decreases by a factor of $\frac{1}{e}$ ($\approx$ 37\%). It is expressed as 
+Once at equilibrium, the Debye length can be interpreted as the distance over which the electric potential from the test charge decreases by a factor of $\frac{1}{e}$ ($\approx$ 37\%). It is expressed as 
 
 \begin{equation}
 \lambda_d = \sqrt{\frac{\epsilon_0 k_B T_e}{e^2 n_e}}
 \end{equation}
 
-This expression relies on the assumption that the energy distribution of the electrons follows a Maxwell-Boltzmann probability distribution. \cite{freidberg_2008_plasma}. Although it is a unique property of IEC devices that their energy distributions in operation are highly non-Maxwellian, Godyak et al. found that in the initial phase of the formation of helium and argon glow discharge plasmas (see section~\ref{discharge_iecplasma_form}), the electron energy distribution function becomes Maxwellian \cite{godyak_1992_evolution}. It would be reasonable to assume that a similar phenomenon would occur for other fuel gases such as deuterium. 
-
-We can also calculate the number of particles in a Debye sphere, i.e. a sphere of radius $\lambda_d$:
-
-\begin{equation}
-    N_D = n\frac{4}{3}\pi\lambda_D^3
-    \label{plasma_param}
-\end{equation}
+This expression relies on the assumption that the energy distribution of the electrons follows a Maxwell-Boltzmann probability distribution. \cite{freidberg_2008_plasma}. Although it is a unique property of IEC devices that their energy distributions in operation are highly non-Maxwellian, Godyak et al. found that in the initial phase of the formation of helium and argon glow discharge plasmas (see section~\ref{discharge_iecplasma_form}), the electron energy distribution function becomes Maxwellian \cite{godyak_1992_evolution}. It would be reasonable to assume that a similar phenomenon would occur for other fuel gases such as deuterium.
 
 The condition for collective behaviour is known as the plasma parameter, or:
 \begin{equation}
-    N_D \gg 1
+    N_D \gg 1  \label{plasma_param}
 \end{equation}
 \cite{chen_2016_introduction} \cite{freidberg_2008_plasma}
-This means that the density of particles must be sufficiently high for a ionized gas to be classed as a plasma.
+This means that the density of particles must be sufficiently high for a ionised gas to be classed as a plasma.
 
 
-\subsubsection{How does a plasma form in an IEC device?}
+\subsubsection{Plasma Formation in IEC}
 \label{discharge_iecplasma_form}
 
-In IEC devices, the plasma forms through the electric breakdown of the fuel gas into a glow discharge. Breakdown occurs when a strong enough electric field is applied across a gap. 
-
-This is because any gas will contain stray ionized particles and electrons. This is due to random ionization of gas molecules by cosmic rays, background radiation and ultraviolet light in a process analogous to the photoelectric effect in metals. If a potential is applied between two cathodes in the gas, an electric field is produced and therefore the charges are accelerated: ions towards the cathode, electrons towards the anode. The electrons initially accelerate to higher velocities faster, as they are lighter than the ions, quickly accelerating to energies higher than the ionization threshold of the neutral gas molecules, ionizing them. This produces further ions and electrons, which each then also move to the cathode and anode respectively; the latter ionize more ions and the cycle repeats in an exponential process known as the Townsend avalanche. \newline
+In IEC devices, the plasma forms through the electric breakdown of the fuel gas into a glow discharge. Breakdown occurs when a strong enough electric field is applied across a gap, as the gas will contain stray ionized particles and electrons from random ionisation of gas molecules by cosmic rays, background radiation and ultraviolet light etc. If a potential is applied between two cathodes in the gas, an electric field is produced and therefore the charges are accelerated: ions towards the cathode, electrons towards the anode. The electrons initially accelerate to higher velocities faster than the ions quickly accelerating to energies higher than the ionisation threshold energy of the neutral gas molecules (a property of the gas), ionising them. Since the mass of an electron is so much smaller than that of an ion, we can assume that during the initial breakdown formation, we can ignore the ion motions. Ionisation events produce further ions and eject more electrons, the latter continuing to ionize more gas molecules. This cycle repeats in an exponential process known as a Townsend avalanche.   \newline
 
 \begin{figure}[H]
     \centering
@@ -211,7 +224,9 @@ This is because any gas will contain stray ionized particles and electrons. This
     \label{fig:townsend}
 \end{figure}
 
-Paschen's law states that the voltage at which this breakdown occurs is a function of pressure and gap distance between the electrodes, and certain breakdown characteristics and constants of the gas occupying the electrode gap. \cite{fu_2020_discharge}Experimental measurements of this voltage at different pd values forgive curves known as Paschen curves. 
+The breakdown stabilises into a glow discharge 
+
+Paschen's law states that the voltage at which this breakdown occurs is a function of pressure and gap distance (pd) between the electrodes, and certain breakdown characteristics and constants of the gas occupying the electrode gap. \cite{fu_2020_discharge}Experimental measurements of this voltage at different pd values produce Paschen curves.
 
 \begin{figure}[H]
     \centering
@@ -220,32 +235,29 @@ Paschen's law states that the voltage at which this breakdown occurs is a functi
     \label{fig:paschen}
 \end{figure}
 
-Assuming a fixed volume, as pressure decreases (left side of the "V" curve), the electric potential required to induce an avalanche grows extremely quickly, due to the low density of particles. This means that when "seed electrons" \cite{raizer_1991_gas} from random ionization are accelerated by the field, they have an extremely long mean free path that means the likelihood that they actually collide and ionize a background neutral molecule is very low. To compensate for this, the energy per collision must be extremely high to increase the impact ionization cross section (see section~\ref{cross_section}) for the greatest likelihood of successful ionization.
 
-Similarly if the gap distance is very low, then the electrons will not be able to accelerate to high enough energies to induce significant ionization before they are lost to the grounded anode, thus a much higher field strength is required to compensate. 
+Assuming a fixed volume and gap distance, as pressure decreases from 1 atmosphere, the mean free path (average distance travelled before collision) of the electrons increases. Thus they are accelerated - on average - to higher velocities before colliding, and so the minimum accelerating voltage decreases. This can be seen on the right of the V-shaped Paschen curve, continuing until a minimum is reached; this is called the Paschen minimum, and is therefore the minimum voltage required to induce breakdown of a gas. \newline
 
-At the low operating pressure of IEC devices ($\approx1$ Pa), the discharge regime is firmly on the left side of the Paschen "V" shape, meaning that the discharge requires a high operating voltage to be sustained. 
+A minimum is reached because as the pressure drops, the density of gas molecules decreases to a point where when "seed electrons" \cite{raizer_1991_gas} from random ionisation are accelerated by the field, they have a long enough mean free path that the likelihood that they actually collide and ionize a background neutral molecule is much lower than before. To compensate for this, the energy per collision must be extremely high to increase the impact ionisation cross section (the probability of ionisation upon collision: see section~\ref{cross_section}) for the greatest likelihood of successful ionisation, therefore, the breakdown voltage starts to increase again on the left side of the curve. 
 
-In this breakdown regime, we are still considering the individual motions of each particle. The density of charges is not high enough for collective behaviour to satisfy the plasma parameter. Eventually, as the avalanche continues, and the electron current through the discharge increases, we transition to the next regime along the DC discharge I-V graph: [rubbish explanation- fix]
+Similarly if the pressure is kept constant and the gap distance is very low, then the electrons will not be able to accelerate to high enough energies to induce significant ionisation before they are lost to the grounded anode, thus a much higher field strength is required to compensate. However we shall assume that gap distance is always kept constant due to the symmetry of IEC anode-cathode geometries. \newline
+
+At the low operating pressure of IEC devices ($\approx1$ Pa), the discharge regime is required to be firmly on the left side of the Paschen "V" shape, i.e. very high voltages are required to sustain the glow discharge. This is required to accelerate the ions to higher energies to increase the probability fusion (see section ~\ref{cross_section}).
+
+Following breakdown, the discharge becomes self-sustaining as more electrons are generated by ions colliding with the metal lattice of the cathode (secondary ionisation). This means that the voltage required to sustain the discharge decreases as the 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{An-overview-of-the-different-electric-discharge-regimes-possible-86.png}
-    \caption{DC discharge regime I-V cruve}
+    \caption{DC discharge regime I-V curve}
     \label{fig:discharge_regimes}
 \end{figure}
 
-which is our glow discharge. 
-
-[need to talk about normal -> abnormal glow, initial sheaths, mean free path lengthening to enter glow regimes: glow, jet, star modes]
-
-
-[also rubbish and incomplete. Liebermann and Lichtenberg. mean free path etc.]
 
 
 
 
-\subsection{How are plasma particles confined?}
+\subsection{Confinement of plasma ions}
 \label{confinement}
 
 In the ideal case for maximum fusion rate, all of the ions in an IEC device are born at maximum energy and will be trapped - or confined - in an electrostatic potential well inside the system. 
@@ -255,13 +267,40 @@ Before the fuel is introduced to the chamber, a single spherically symmetrical p
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{simplepotential.jpg}
-    \caption{Linear Potential Profile of IEC device at low ion current and no space charge effects(plot own with matlab later) \cite{miley_2013_inertial}}
+    \caption{1 dimensional linear Potential Profile of IEC device with no charged species. Dotted line shows cathode position. Analogous to a parallel plate configuration due to symmetry. \cite{miley_2013_inertial}}
     \label{fig:linear_pot}
 \end{figure}
 
-Once we introduce fuel molecules into the system, our discharge process begins. The maximum energy a seed electron can have in the system must be equal to the product of $e$ and the cathode potential $V$, and therefore following ionisation - depending on where the ion is born and the potential $\phi$ at that point - it's maximum energy must also be equal to $e\phi$. The ions fall towards the negative cathode before (ideally) passing through the grid openings and then entering the oscillatory recirculations introduced in section~\ref{general_config}. To maximise the energy the ions can be accelerated to, fuel ions rather than neutrals are often first injected into the system so that they can be accelerated as soon as they pass through the anode grid openings. 
+Once we introduce fuel molecules into the system, our discharge process begins. The maximum energy a seed electron can have in the system must be equal to the product of $e$ and the cathode potential $V$, and therefore following ionisation - depending on where the ion is born and the potential $\phi$ at that point - it's maximum energy must also be equal to $e\phi$. The ions fall towards the negative cathode before (ideally) passing through the grid openings and then entering the oscillatory recirculations introduced in section~\ref{general_config}. %To maximise the energy the ions can be accelerated to, fuel ions rather than neutrals are often first injected into the system so that they can be accelerated as soon as they pass through the anode grid openings. \\move elsewhere
 
-As the ion charge density increases and the plasma parameter (equation~\ref{plasma_param}) is satisfied, we now have an energy distribution of charges occupying the system. This distribution has its own electric field which disrupts the external field provided by the electrodes. We have now entered the space charge regime, where the potential profile of the environment is strongly influenced by the self field of the charge distribution inside the device. \cite{ferrario_2013_space_charge} \newline
+As the ion charge density increases and the plasma parameter (equation~\ref{plasma_param}) is satisfied, we now have an energy distribution of charges occupying the system. This distribution has its own electric field which disrupts the external field provided by the electrodes. These effects are known as space charge effects, where the potential profile of the environment is strongly influenced by the self-field of the charge distribution inside the device. \cite{ferrario_2013_space_charge} \newline
+
+Prior analytical and experimental studies into the potential profiles of spherical IEC devices have shown that as ions converge more strongly in the centre of the cathode grid (i.e. the ion current increases), the positive space charge density increases to form a dense core region inside the cathode, which creates a central "virtual anode" structure. \cite{miley_2013_inertial} 
+
+\begin{figure}[H]  %turn into fig 9.1 and 9.2
+    \centering
+    \includegraphics[width=0.5\linewidth]{virtualanode.png}
+    \caption{Virtual Anode structure  \cite{miley_2013_inertial}}
+    \label{fig:virtualanode}
+\end{figure}
+Formation of these structures have been confirmed experimentally by using devices called Langmuir probes which can measure the potential at a point in a plasma. \cite{thorson_1997_convergence} \cite{khachan_2003_spatial} This is not ideal for fusion, as ideally the ions are able to reach their maximum energies in the centre of cathode where they can collide with other maximum-energy ions. Instead, the high positive space charge density in the centre can almost reach ground potential, causing ions to instead be decelerated as they approach the core. In the case of glow discharge plasmas, ions will not necessarily be borne at ground potential, so many will not have enough kinetic energy when they reach the virtual anode to travel across it to recirculate. They will instead be reflected back towards the outer anode grid. 
+\cite{miley_2013_inertial}
+
+However, if current increases further, the 
+
+If two of these structures form in the centre of the core, then they will be separated by a "virtual cathode" with a high negative potential depth. This aids in confining ions and promotes further recirculation inside the core.
+
+deep internal potential well structures can form inside the core of the device, providing a dense core region where fusion can occur efficiently. 
+
+
+
+
+
+
+
+
+
+
 
 A simplified model of the confinement scheme will assume the following:
 
@@ -322,14 +361,11 @@ The ion optics software library IBSimu (Ion Beam Simulator) was chosen as it fol
 
 
 
-\subsection{How does Fusion occur?}
+\subsection{Fusion}
 \label{fusion}
 
 \subsubsection{Fusion reactions} 
 \label{fusion_reactions}
-
-
-
 Typical IEC devices utilise fuels consisting either of pure deuterium or deuterium-tritium mixes. The deuterium-deuterium (D-D) reaction has two pathways with a roughly equal chance of occurence:
 
 \begin{equation*}
@@ -355,29 +391,27 @@ and for the deuterium-tritium (D-T) reaction:
 \quad (Q = 17.6\,\text{MeV})
 \end{equation*}
 
+The fusion rate can therefore be estimated by counting the number of neutrons or protons emitted, depending on the fuel mix used. Other "advanced fuels" such as D-${}^{3}_{2}\mathrm{He}$
+
 The energy gains (calculated from the binding energy difference between the reactancts and the products) show that the D-T reaction is far more favourable compared to the D-D reaction from an energy production perspective. 
 
-In a realistic IEC device, the reactions are more complex. This is due to the fact that not all of the neutral deuterium molecules are ionized following introduction to the reaction vessel. Many ions will also lodge themselves into the metal lattice of the anode and cathode grid wires and the chamber walls. In their investigation of a pulsed cylindrical IEC device - which holds the world record for overall neutron production rate - Tomiyasu et al. identified seven reaction regimes (which are still applicable to spherical and other shapes of device):
+In a realistic IEC device, the reactions are more complex. This is due to the fact that not all of the neutral deuterium molecules are ionised following introduction to the reaction vessel. Many ions will also lodge themselves into the metal lattice of the anode and cathode grid wires and the chamber walls. Tomiyasu et al. identified seven reaction regimes:
 
 \begin{itemize}
-    \item Beam-beam (BM-BM): Occurs between ions in the star-mode beams. This is the ideal scenario to reduce energy loss from collisions with the grid wires, the main limiting factor to IEC reaction rate. 
-    \item Beam-background (BM-BG): Occurs between beam ions and background neutrals in the chamber which are not circulating through the beams. 
-    \item Beam-Cathode (BM-C): Occurs between beam ions and ions that become lodged into the cathode grid wires.
-    \item Fast neutral-background (CX-BG): if an ion collides with a background neutral, there is a probability (quantified by the charge-exchange cross section) that the ion acquires an electron from the neutral, and the neutral therefore gains the charge of an ion. The former ion is now a high-energy neutral atom experiencing no force from the electric field of the system, moving at a constant velocity through the chamber until it collides and fuses with another background neutral.
-    \item Fast neutral - cathode (CX-C): The high-energy neutral now collides with a lodged ion in the cathode grid wires.
-    \item Fast neutral - anode (CX-A): ditto for anode grid wires
-    \item Fast neutral - chamber wall (CX-W): ditto for chamber walls. 
+    \item Beam-beam (BM-BM): Occurs between ions in the star-mode beams. This is the ideal scenario to reduce energy loss from collisions with the grid wires, one of the main limiting factor to IEC reaction rate. 
+    \item Beam-background (BM-BG): Occurs between beam ions and background neutrals in the chamber. 
+    \item Beam-cathode (BM-C): Occurs between beam ions and ions that become lodged in the metal lattice of the cathode grid wires.
+    \item Fast neutral-background/solid (CX-BG/C/A/W): if an ion collides with a background neutral, there is a probability that the ion acquires an electron from the neutral, and the neutral therefore gains the charge of an ion. The former ion is now a high-energy neutral atom experiencing no force from the fields in the system, moving at a constant velocity through the chamber until it collides and fuses with another background neutral, or an ion lodged in the cathode, anode, or chamber walls. 
 \end{itemize}
 
+However, even the IEC device with the highest ever recorded neutron production rate (and therefore highest reaction rate) has the lowest yield from beam-beam reactions. In fact, the reactor with the world record for neutron production rate (NPR) - and therefore fusion rate \cite{tomiyasu_2009_effects} had BM-BM as the lowest contributor to the overall production rate by over five orders of magnitude. The dominant reaction regimes were BM-C and BM-BG. This highlights  one of the fatal inefficiencies of an IEC device caused by presence of the grid wires. 
 
-However, even the IEC device with the highest ever recorded neutron production rate (and therefore highest reaction rate) has the lowest yield from beam-beam reactions. In fact, the reactor with the world record for neutron production rate (NPR) - and therefore fusion rate \cite{tomiyasu_2009_effects} had BM-BM as the lowest contributor to the overall production rate by over five orders of magnitude. The dominant reaction regimes were BM-C and BM-BG. This highlights  one of the fatal inefficiences of an IEC device caused by presence of the grid wires. 
-
-\subsubsection{How likely is fusion?}
+\subsubsection{Fusion likelihood}
 \label{cross_section}
 
-The probability of a nuclear reaction occuring between these species is characterised by a quantity called the cross section. If we consider two colliding particles, the cross section can be interpreted as the circular area (measured in barns = $10^{-28} \text{ m}^2$ projected from the target particle normal to the velocity of the incident particle. If the incident particle passes through this area with sufficient energy, then the force exerted on the target particle is sufficient to overcome the Coulomb repulsion between them for the nuclear reaction to occur. The cross section is therefore a function of the energy of the incident particle relative to the target particle (many reactions and kinetic processes have cross sections, including for collisional ionization, as referenced in section~\ref{discharge_iecplasma_form}).
+Although the collective effects of a plasma mean that when looking at its macroscopic behaviour, we can ignore the microscopic repulsions and attractions within it, when considering micrscopic collision events between individual like-charge particles to determine the likelihood of fusion, we must take the electrostatic forces between  
 
-Quantum mechanical effects of tunnelling and resonance also have to be taken into account to give an accurate model of the reaction probability at different energies. 
+The probability of a nuclear reaction occuring between these species is characterised by a quantity called the cross section. If we consider two colliding particles, the cross section can be interpreted as the circular area (measured in barns = $10^{-28} \text{ m}^2$ projected from the target particle normal to the velocity of the incident particle. If the incident particle passes through this area with sufficient energy, then the force exerted on the target particle is sufficient to overcome the Coulomb repulsion between them for the nuclear reaction to occur. The cross section is therefore a function of the energy of the incident particle relative to the target particle (many reactions and kinetic processes have cross sections, including for collisional ionisation, as referenced in section~\ref{discharge_iecplasma_form}).
 
 \begin{figure}[H]
     \centering
@@ -385,7 +419,12 @@ Quantum mechanical effects of tunnelling and resonance also have to be taken int
     \caption{Cross Section Data for D-D and D-T reactions as a function of incident particle energy in the incident frame.\cite{bjrnstad_2021_modern}}
     \label{fig:placeholder}
 \end{figure}
-Figure 3 shows that the D-T reaction is far more favourable; its resonance peak of around 5-6 barns at around 50-60keV is two orders of magnitude higher than for D-D.
+Figure 3 shows that the D-T reaction is far more favourable; its resonance peak of around 5-6 barns at around 50-60keV is two orders of magnitude higher than for D-D. Thus devices utilising D-T fuel will require the least energy input to accelerate fuel ions, and will also have the highest fusion rate (assuming all other variables constant.)
+
+However, for all fuels, accelerating particles beyond a certain energy will cause the cross-section to decrease due to quantum tunnelling effects, where 
+
+
+
 
 
 
@@ -394,10 +433,9 @@ Figure 3 shows that the D-T reaction is far more favourable; its resonance peak 
 
 \subsection{Numerical model of confinement in the experimental setup}
 
-\subsubsection{Historical Overview of Numerical Methods}
+\subsubsection{Historical Overview of Numerical Results}
 
 [mention difficulty in simulating the device due to many random factors, difficulty to probe plasma without perturbation etc]
-Prior studies into the potential profiles of spherical IEC devices have shown that convergence of ions in the centre of the cathode grid forma into a dense core, the positive space charge density increases the potential at the centre of the and therefore central "virtual anode" structures form. If multiple of these structures form, then deep internal potential well structures can form inside the core of the device, providing a dense core region where fusion can occur efficiently. 
 
 There have been conflicting claims in the literature about the formation of so-called "well within a well" or "double potential well" structures, as shown in the figure below:
 
@@ -408,19 +446,34 @@ There have been conflicting claims in the literature about the formation of so-c
     \label{fig:double_well}
 \end{figure}
 
-Gu and Miley have addressed issues with prior experiments and provide new data through improved spacial resolution of measurements to verify that double potential well structures do indeed form in certain configurations of IEC devices \cite{gu_2000_experimental}, verifying the initial ground-breaking work in the field made by Hirsch in 1967 \cite{hirsch_1967_inertialelectrostatic}
+Gu and Miley have addressed issues with prior experiments and provide new experimental data through improved spacial resolution of measurements to verify that double potential well structures do indeed form in certain configurations of IEC devices \cite{gu_2000_experimental}, verifying the initial ground-breaking work in the field made by Hirsch in 1967 \cite{hirsch_1967_inertialelectrostatic}.
 
 
 
 
+\section{Construction Overview}
+
+This project presents an extremely simplified IEC system. Due to institutional safety regulations, power supply voltage was limited to 5kV with a current limit of 2mA. No fusion-capable fuel (deuterium) was introduced to the system. 
+
+\subsection{Vacuum}
+An extremely low pressure vacuum ("ultra-high vacuum") is needed in a IEC system before fuel injection. This is to remove any contaminants, including air molecules and dust, so that the background environment in the system consists solely of fuel molecules. 
+
+The chamber and its seals must be able to withstand these low pressures and hold this high vacuum. 
+
+The main vacuum parts are SAE 304 stainless steel Conflat parts. These are pre-engineered and industry standard for vacuum systems. Conflat flanges are sealed using copper gaskets compressed between knife-edges on the connecting flanges. They require a high and uniform compressive force to ensure that the copper can conform to the knife edge to create a seal \cite{2015_conflat}. 304 stainless steel is known for its low outgassing rates and high structural strength, important for maintaining ultra-high vacuum systems such as those employed in IEC devices.
+
+A diagram of the system is shown below.
+
+[insert diagram]
+
+All tubing into the system is polytetrafluoroethylene, which is known for its low outgassing rates, connected via Swagelok fittings. 
 
 
 
-
+\section{Experimental Results}
 
 \newpage
 
 \printbibliography
-
 \end{flushleft}
 \end{document}

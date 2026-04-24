@@ -44,7 +44,7 @@ z-long tube
 using namespace std;
 
 const double beam_current = 2.0 *1e-3;
-const long N_clouds = 100000;
+const long N_clouds = 1000000;
 const double IQ = beam_current/((double) N_clouds);
 //const double m = 28.0134; //nitrogen molecule
 const double m = 2.0141017778; //deuterium
@@ -68,7 +68,7 @@ const uint32_t cx = 105;
 const uint32_t cy = 160;
 const uint32_t cz = 105;
 
-int n_iter = 30;
+int n_iter = 40;
 
 random_device rd1{};
 mt19937 gen{rd1()};
@@ -120,7 +120,7 @@ double epot_max_error(const EpotField &epot, const EpotField &epot_old) {
 }
 
 void sim(int argc, char **argv){
-    string run = "run4/";
+    string run = "run7/";
 
     string geom_fn = "geom.dat";
     ifstream is_geom(geom_fn.c_str());
@@ -191,7 +191,7 @@ void sim(int argc, char **argv){
 
 
     //MAIN SELF-CONSISTENT LOOP
-    while (error > error_thresh && j <= n_iter) {
+    while (error > error_thresh && j <= 2) {
         solver.solve(epot, scharge);
         efield.recalculate();
         pdb.clear();
