@@ -9,7 +9,7 @@ df = pd.read_csv('pschen.csv')
 df['pressure_mTorr'] = df['Pressure/mbar'] * 750.062
 df['voltage_V'] = df['Striking Voltage/kV'] * 1000
 df['pd'] = (df['pressure_mTorr'] / 1000) * 3  # pressure in Torr × d in cm
-pressure_abs_uncs_mBar = [0.05,0.05,0.05,0.05,5,50,50,0.005,0.005,0.005]
+pressure_abs_uncs_mBar = [0.05,0.05,0.05,0.05,5,50,50,0.005,0.005,0.005, 0.005, 0.005]
 voltage_abs_unc_kV = 0.005
 # convert to matching units
 
