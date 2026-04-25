@@ -1,6 +1,6 @@
 import pandas as pd
 
-run = 'run7/'
+run = 'run8/'
 plots = run + 'plots/'
 
 axes = ['x', 'y', 'z']

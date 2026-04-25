@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-run = 'run7/'
+run = 'run8/'
 plots = run + 'plots/'
 
 df = pd.read_csv(run + 'epot_error.dat', sep=r'\s+', comment='#', header=None, names=['iteration', 'epot_max_error'])

@@ -40,11 +40,12 @@ z-long tube
 #include "config.h"
 #include "stl_solid.hpp"
 #include "particles.hpp"
+#include "gtkplotter.hpp"
 
 using namespace std;
 
 const double beam_current = 2.0 *1e-3;
-const long N_clouds = 1000000;
+const long N_clouds = 100000;
 const double IQ = beam_current/((double) N_clouds);
 //const double m = 28.0134; //nitrogen molecule
 const double m = 2.0141017778; //deuterium
@@ -119,8 +120,8 @@ double epot_max_error(const EpotField &epot, const EpotField &epot_old) {
     return max;
 }
 
-void sim(int argc, char **argv){
-    string run = "run7/";
+void sim(int &argc, char **&argv){
+    string run = "run8/";
 
     string geom_fn = "geom.dat";
     ifstream is_geom(geom_fn.c_str());
@@ -313,6 +314,40 @@ void sim(int argc, char **argv){
         opot_x << setw(14) << r << " " << setw(14) << epot(cx + a, cy, cz) << "\n";
     }
     opot_x.close();
+
+    // PIC time stepping
+    pdb.clear();
+    add_particles(pdb, geom);
+    const double dt = 1e-8;
+    const int n_steps = 500;
+
+    ofstream otstep(run + "timestep_potential.dat");
+    otstep << "# step    pot_x    pot_y    pot_z\n";
+
+    for (int step = 1; step <= n_steps; step++) {
+        pdb.step_particles(scharge, efield, bfield, dt);
+        solver.solve(epot, scharge);
+        efield.recalculate();
+
+        if (step % 10 == 0) {
+            otstep << setw(10) << step
+                   << " " << setw(14) << epot(cx, cy, cz)
+                   << " " << setw(14) << epot(cx, cy, cz)
+                   << " " << setw(14) << epot(cx, cy, cz) << "\n";
+        }
+    }
+    otstep.close();
+
+    // GTK interactive viewer (blocks until windows are closed)
+    GTKPlotter plotter(&argc, &argv);
+    plotter.set_geometry(&geom);
+    plotter.set_epot(&epot);
+    plotter.set_efield(&efield);
+    plotter.set_scharge(&scharge);
+    plotter.set_particledatabase(&pdb);
+    plotter.new_geometry_3d_plot_window();
+    plotter.new_geometry_plot_window();
+    plotter.run();
 
 }
 
