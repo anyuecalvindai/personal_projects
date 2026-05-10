@@ -40,7 +40,6 @@ z-long tube
 #include "config.h"
 #include "stl_solid.hpp"
 #include "particles.hpp"
-#include "gtkplotter.hpp"
 
 using namespace std;
 
@@ -120,7 +119,7 @@ double epot_max_error(const EpotField &epot, const EpotField &epot_old) {
     return max;
 }
 
-void sim(int &argc, char **&argv){
+void sim(int argc, char **argv){
     string run = "run8/";
 
     string geom_fn = "geom.dat";
@@ -337,17 +336,6 @@ void sim(int &argc, char **&argv){
         }
     }
     opot_step.close();
-
-    // 2D GTK interactive viewer (blocks until windows are closed)
-    GTKPlotter plotter(&argc, &argv);
-    plotter.set_geometry(&geom);
-    plotter.set_epot(&epot);
-    plotter.set_efield(&efield);
-    plotter.set_scharge(&scharge);
-    plotter.set_particledatabase(&pdb);
-    plotter.new_geometry_plot_window();
-    plotter.run();
-
 }
 
 
