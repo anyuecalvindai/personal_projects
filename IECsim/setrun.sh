@@ -8,3 +8,4 @@ sed -i "s|run = '[^']*'|run = '${RUN}/'|" pot_error.py
 sed -i "s|run = '[^']*'|run = '${RUN}/'|" centralheight.py
 sed -i "s|run = '[^']*'|run = '${RUN}/'|" epot_error_rms.py
 sed -i "s|run = '[^']*'|run = '${RUN}/'|" memory_estimate.py
+sed -i "s|run = '[^']*'|run = '${RUN}/'|" timestep_animation.py

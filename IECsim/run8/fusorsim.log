@@ -1,0 +1,15 @@
+Ion Beam Simulator 1.0.6dev (89c1280, Thu Oct 26 17:14:45 2023 +0300)
+Constructing Geometry from stream
+  Warning: loading of STLSolid not implemented
+  Warning: loading of STLSolid not implemented
+  Warning: loading of STLSolid not implemented
+Building surface triangulation
+  814968 triangles
+  410197 vertices
+  Done.
+  time used = 0.121205 s (0.121249 s realtime)
+Calculating efield
+Solving problem
+  dof = 16957537
+  Using BiCGSTAB-ILU0 solver (imax = 10000, eps = 0.05)
+        0         1.024000e+05        1         3.569577e+02        2         1.924326e+02        3         1.282404e+02        4         9.518208e+01        5         7.286367e+01        6         5.530548e+01        7         4.247816e+01        8         3.377224e+01        9         2.764529e+01       10         2.393635e+01       11         2.172941e+01       12         1.983000e+01

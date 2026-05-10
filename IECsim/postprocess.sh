@@ -8,3 +8,4 @@ python pot_error.py
 python centralheight.py
 python epot_error_rms.py
 python memory_estimate.py
+python timestep_animation.py

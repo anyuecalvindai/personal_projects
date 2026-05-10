@@ -315,37 +315,36 @@ void sim(int &argc, char **&argv){
     }
     opot_x.close();
 
-    // PIC time stepping
-    pdb.clear();
-    add_particles(pdb, geom);
-    const double dt = 1e-8;
-    const int n_steps = 500;
+    //PIC time stepping
+    double dt = 1e-8;       // 10ns timestep
+    int n_steps = 500;
 
-    ofstream otstep(run + "timestep_potential.dat");
-    otstep << "# step    pot_x    pot_y    pot_z\n";
+    ofstream opot_step(run + "timestep_potential.dat");
+    opot_step << "# step    pot_centre (V)\n";
 
-    for (int step = 1; step <= n_steps; step++) {
+    for (int s = 1; s <= n_steps; s++) {
         pdb.step_particles(scharge, efield, bfield, dt);
         solver.solve(epot, scharge);
         efield.recalculate();
 
-        if (step % 10 == 0) {
-            otstep << setw(10) << step
-                   << " " << setw(14) << epot(cx, cy, cz)
-                   << " " << setw(14) << epot(cx, cy, cz)
-                   << " " << setw(14) << epot(cx, cy, cz) << "\n";
+        if (s % 10 == 0) {
+            opot_step << setw(10) << s << " " << setw(14) << epot(cx, cy, cz) << "\n";
+
+            gplotter.set_view(VIEW_XZ, -1);
+            gplotter.set_ranges(-0.05, -0.05, 0.05, 0.05);
+            gplotter.set_fieldgraph_plot(FIELD_EPOT);
+            gplotter.plot_png((run + "timestep_epot_xz_" + to_string(s) + ".png").c_str());
         }
     }
-    otstep.close();
+    opot_step.close();
 
-    // GTK interactive viewer (blocks until windows are closed)
+    // 2D GTK interactive viewer (blocks until windows are closed)
     GTKPlotter plotter(&argc, &argv);
     plotter.set_geometry(&geom);
     plotter.set_epot(&epot);
     plotter.set_efield(&efield);
     plotter.set_scharge(&scharge);
     plotter.set_particledatabase(&pdb);
-    plotter.new_geometry_3d_plot_window();
     plotter.new_geometry_plot_window();
     plotter.run();
 
