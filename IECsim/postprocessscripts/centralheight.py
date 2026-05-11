@@ -1,7 +1,9 @@
+import os
 import pandas as pd
 
 run = 'run8/'
 plots = run + 'plots/'
+os.makedirs(plots, exist_ok=True)
 
 axes = ['x', 'y', 'z']
 #plucks epot values at r=0 for all xyz, averages. i.e. will be the average virtual anode height or average virtual cathode depth.

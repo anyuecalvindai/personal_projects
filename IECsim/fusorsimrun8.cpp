@@ -43,24 +43,19 @@ z-long tube
 
 using namespace std;
 
-const double beam_current = 0.080;   // 80mA ions
+const double beam_current = 0.002;   // 2mA ions
 const long N_clouds = 100000;
 const double IQ = beam_current/((double) N_clouds);
 //const double m = 28.0134; //nitrogen molecule
 const double m = 2.0141017778; //deuterium
 
-const double beam_current_e = 0.080; // 80mA electrons
-const long N_clouds_e = 100000;
-const double IQ_e = beam_current_e / ((double) N_clouds_e);
-const double m_e = 0.000548579909;   // electron mass in amu
-
 const double q = 1;
 
 double h = 0.0003;
-double cathodepot = -15000.0;
+double cathodepot = -5000.0;
 double anodepot = 0.0;
 double anode_r = 15*1.33 * 1e-3;
-const double cathode_r = 0.005;      // 5mm cathode radius
+const double cathode_r = 0.005;      //5mm cathode radius
 
 double sim_x = 0.048+0.03175; 
 double sim_y = 0.096;
@@ -109,12 +104,6 @@ void add_ions(ParticleDataBase3D &pdb, Geometry &geom) {
     }
 }
 
-void add_electrons(ParticleDataBase3D &pdb_e, Geometry &geom) {
-    for (long i = 1; i <= N_clouds_e; i++) {
-        pdb_e.add_particle(IQ_e, -1, m_e, sample(cathode_r, geom));
-    }
-}
-
 
 double epot_max_error(const EpotField &epot, const EpotField &epot_old) {//compute maximum error between this run and last run's epot for all mesh nodes. 
     double max = 0.0;
@@ -143,6 +132,7 @@ void snapshot(ParticleDataBase3D &pdb, string fn, int step) {
 void sim(int argc, char **argv){
     string run = "run8/";
 
+
     string geom_fn = "geom.dat";
     ifstream is_geom(geom_fn.c_str());
     if (!is_geom.good())
@@ -150,7 +140,6 @@ void sim(int argc, char **argv){
     Geometry geom( is_geom );
     is_geom.close();
     geom.build_surface();
-    geom.set_boundary(8, Bound(BOUND_DIRICHLET, -15000.0));
 
     EpotBiCGSTABSolver solver(geom);
 
@@ -164,9 +153,6 @@ void sim(int argc, char **argv){
     ParticleDataBase3D pdb(geom);
     pdb.set_surface_collision(true);
 
-    ParticleDataBase3D pdb_e(geom); 
-    pdb_e.set_surface_collision(true);
-
     Convergence conv;
     conv.add_epot(epot);
     conv.add_scharge(scharge);
@@ -175,8 +161,6 @@ void sim(int argc, char **argv){
 
     solver.solve(epot, scharge);
     efield.recalculate();
-
-
     //PLOTTING + DATA FOR INITIAL POTENTIAL
 
     GeomPlotter gplotter(geom);
@@ -200,7 +184,6 @@ void sim(int argc, char **argv){
     int j = 1;
     double error_thresh = 5.0; //volts. corresponds to 0.1% error with 5kV
 
-
     ofstream osteps(run + "trajectory_steps.dat");
     osteps << "# iteration    total_steps\n";
 
@@ -217,20 +200,13 @@ void sim(int argc, char **argv){
     oerr << "# iteration    epot_max_error (V)    epot_L2_norm (V)\n";
 
 
-    scharge.clear();
-pdb.clear();
-pdb_e.clear();
-add_ions(pdb, geom);
-add_electrons(pdb_e, geom);
-pdb.iterate_trajectories(scharge, efield, bfield);
-pdb_e.iterate_trajectories(scharge, efield, bfield);
-
 
 
     //MAIN SELF-CONSISTENT LOOP
     while (error > error_thresh && j <= 2) {
         solver.solve(epot, scharge);
         efield.recalculate();
+        scharge.clear();
         pdb.clear();
         add_ions(pdb, geom);
         pdb.iterate_trajectories(scharge, efield, bfield);
@@ -265,8 +241,6 @@ pdb_e.iterate_trajectories(scharge, efield, bfield);
     opot_iter_y.close();
     opot_iter_x.close();
     oerr.close();
-
-    
 
     ofstream ofconv(run + "fusorsim_conv_1_10.dat");
     conv.print_history(ofconv);
@@ -339,10 +313,6 @@ pdb_e.iterate_trajectories(scharge, efield, bfield);
     }
     opot_y.close();
 
-
-
-
-
     //radial scan along x axis (side tube)
     ofstream opot_x(run + "potential_radial_x.dat");
     opot_x << "# r (m)    potential (V)\n";
@@ -390,4 +360,4 @@ int main(int argc, char **argv){
     }
 
     return(0);
-}
+}   

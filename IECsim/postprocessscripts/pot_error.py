@@ -1,8 +1,10 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 
-run = 'run7/'
+run = 'run8/'
 plots = run + 'plots/'
+os.makedirs(plots, exist_ok=True)
 
 df = pd.read_csv(run + 'epot_error.dat', sep=r'\s+', comment='#', header=None, names=['iteration', 'epot_max_error'])
 

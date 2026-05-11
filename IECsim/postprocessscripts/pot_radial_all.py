@@ -1,9 +1,11 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
-run = 'run7/'
+run = 'run8/'
 plots = run + 'plots/'
+os.makedirs(plots, exist_ok=True)
 
 axes = ['x', 'y', 'z']
 labels = ['X axis (side tube)', 'Y axis (long tube vertical diameter)', 'Z axis (long tube)']

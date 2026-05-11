@@ -5,8 +5,9 @@ import imageio.v2 as imageio
 
 run = 'run8/'
 plots = run + 'plots/'
+pics = run + 'timestep_pics/'
 
-files = glob(run + 'timestep_epot_xz_*.png')
+files = glob(pics + 'timestep_epot_xz_*.png')
 
 def step_num(p):
     m = re.search(r'timestep_epot_xz_(\d+)\.png', os.path.basename(p))
@@ -15,7 +16,7 @@ def step_num(p):
 files = sorted(files, key=step_num)
 
 if not files:
-    raise SystemExit('no timestep_epot_xz_*.png files found in ' + run)
+    raise SystemExit('no timestep_epot_xz_*.png files found in ' + pics)
 
 os.makedirs(plots, exist_ok=True)
 
