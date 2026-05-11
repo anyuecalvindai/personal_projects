@@ -1,1 +1,7 @@
 venv/
+run*/timestep_pics/
+run*/pout/
+run*/*.png
+run*/plots/*.png
+*.png
+
