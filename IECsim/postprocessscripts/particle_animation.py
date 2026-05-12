@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import imageio.v2 as imageio
 
-run = 'run8/'
+run = 'run9/'
 plots = run + 'plots/'
 pout = run + 'pout/'
 os.makedirs(plots, exist_ok=True)

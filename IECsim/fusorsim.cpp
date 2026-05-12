@@ -141,7 +141,7 @@ double epot_max_error(const EpotField &epot, const EpotField &epot_old) {//compu
 // }
 
 void sim(int argc, char **argv){
-    string run = "run8/";
+    string run = "run9/";
 
     string geom_fn = "geom.dat";
     ifstream is_geom(geom_fn.c_str());

@@ -1,7 +1,7 @@
 import numpy as np
 import os
 
-run = 'run8/'
+run = 'run9/'
 
 N_particles = 1000000
 bytes_per_particle = 108
