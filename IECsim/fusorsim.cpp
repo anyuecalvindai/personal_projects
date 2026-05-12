@@ -131,14 +131,14 @@ double epot_max_error(const EpotField &epot, const EpotField &epot_old) {//compu
     return max;
 }
 
-void snapshot(ParticleDataBase3D &pdb, string fn, int step) {
-    ofstream of(fn.c_str());
-    for (size_t i = 0; i < pdb.size(); i++) {
-        Particle3D p = pdb.particle(i);
-        if (p.get_status() != PARTICLE_OK) continue;
-        of << p[1] << " " << p[3] << " " << p[5] << "\n";
-    }
-}
+// void snapshot(ParticleDataBase3D &pdb, string fn, int step) {
+//     ofstream of(fn.c_str());
+//     for (size_t i = 0; i < pdb.size(); i++) {
+//         Particle3D p = pdb.particle(i);
+//         if (p.get_status() != PARTICLE_OK) continue;
+//         of << p[1] << " " << p[3] << " " << p[5] << "\n";
+//     }
+// }
 
 void sim(int argc, char **argv){
     string run = "run8/";
@@ -217,23 +217,18 @@ void sim(int argc, char **argv){
     oerr << "# iteration    epot_max_error (V)    epot_L2_norm (V)\n";
 
 
-    scharge.clear();
-pdb.clear();
-pdb_e.clear();
-add_ions(pdb, geom);
-add_electrons(pdb_e, geom);
-pdb.iterate_trajectories(scharge, efield, bfield);
-pdb_e.iterate_trajectories(scharge, efield, bfield);
-
 
 
     //MAIN SELF-CONSISTENT LOOP
-    while (error > error_thresh && j <= 2) {
+    while (j <= n_iter) {
         solver.solve(epot, scharge);
         efield.recalculate();
+        scharge.clear();
         pdb.clear();
         add_ions(pdb, geom);
+        add_electrons(pdb_e, geom);
         pdb.iterate_trajectories(scharge, efield, bfield);
+        pdb_e.iterate_trajectories(scharge, efield, bfield);
         osteps << setw(10) << j << " " << setw(20) << pdb.get_statistics().sum_steps() << "\n";
         conv.evaluate_iteration();
 
@@ -372,7 +367,6 @@ pdb_e.iterate_trajectories(scharge, efield, bfield);
             gplotter.set_fieldgraph_plot(FIELD_EPOT);
             gplotter.plot_png((run + "timestep_pics/timestep_epot_xz_" + to_string(s) + ".png").c_str());
 
-            snapshot(pdb, run + "pout/pout_" + to_string(s) + ".txt", s);
         }
     }
     opot_step.close();
