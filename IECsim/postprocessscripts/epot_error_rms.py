@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 
-run = 'run9/'
+run = 'run10/'
 plots = run + 'plots/'
 os.makedirs(plots, exist_ok=True)
 

@@ -1,0 +1,598 @@
+Ion Beam Simulator 1.0.6dev (89c1280, Thu Oct 26 17:14:45 2023 +0300)
+Constructing Geometry from stream
+  Warning: loading of STLSolid not implemented
+  Warning: loading of STLSolid not implemented
+  Warning: loading of STLSolid not implemented
+Building surface triangulation
+  814968 triangles
+  410197 vertices
+  Done.
+  time used = 0.347089 s (0.347189 s realtime)
+Calculating efield
+Solving problem
+  dof = 16957537
+  Using BiCGSTAB-ILU0 solver (imax = 10000, eps = 0.05)
+     93         4.955714e-02  
+  error estimate = 0.0495571
+  iterations = 93
+  time used = 133.599 s (133.632 s realtime)
+Calculating efield
+Plotting to PNG-file "run10/epot_xy_initial.png"
+Plotting to PNG-file "run10/epot_xz_initial.png"
+Plotting to PNG-file "run10/epot_yz_x0_initial.png"
+Solving problem
+  dof = 16957537
+  Using BiCGSTAB-ILU0 solver (imax = 10000, eps = 0.05)
+  
+  error estimate = 0.0495571
+  iterations = 0
+  time used = 3.15966 s (3.16031 s realtime)
+Calculating efield
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+  100000 / 100000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (100000 total):
+    flown = 99874
+    time limited = 0
+    step count limited = 11
+    bad definitions = 115
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 7.8e-07 A (39 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = 5.7e-06 A (285 particles)
+    beam to boundary 6 = 7.88e-06 A (394 particles)
+    beam to boundary 7 = 1.56e-06 A (78 particles)
+    beam to boundary 8 = 0.00198156 A (99078 particles)
+    beam to boundary 9 = 0 A (0 particles)
+    total steps = 6908102
+    steps per particle (ave) = 69.081
+  time used = 36.9886 s (9.89094 s realtime)
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+  100000 / 100000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (100000 total):
+    flown = 99997
+    time limited = 0
+    step count limited = 0
+    bad definitions = 3
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 0 A (0 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = -1.706e-05 A (853 particles)
+    beam to boundary 6 = -5.68e-06 A (284 particles)
+    beam to boundary 7 = -0.00162386 A (81193 particles)
+    beam to boundary 8 = 0 A (0 particles)
+    beam to boundary 9 = -0.00035334 A (17667 particles)
+    total steps = 3894289
+    steps per particle (ave) = 38.9429
+  time used = 23.4404 s (6.30531 s realtime)
+Iteration round 0
+  Epot error = 0 V (max)
+  Space charge error = 0 C/m3 (max)
+Solving problem
+  dof = 16957537
+  Using BiCGSTAB-ILU0 solver (imax = 10000, eps = 0.05)
+     10         4.451776e-02  
+  error estimate = 0.0445178
+  iterations = 10
+  time used = 16.7633 s (16.7665 s realtime)
+Calculating efield
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+  100000 / 100000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (100000 total):
+    flown = 99853
+    time limited = 0
+    step count limited = 15
+    bad definitions = 132
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 1.1e-06 A (55 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = 6.2e-06 A (310 particles)
+    beam to boundary 6 = 8.14e-06 A (407 particles)
+    beam to boundary 7 = 1.6e-06 A (80 particles)
+    beam to boundary 8 = 0.00197998 A (98999 particles)
+    beam to boundary 9 = 4e-08 A (2 particles)
+    total steps = 6909311
+    steps per particle (ave) = 69.0931
+  time used = 36.9708 s (9.87559 s realtime)
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+  100000 / 100000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (100000 total):
+    flown = 99995
+    time limited = 0
+    step count limited = 0
+    bad definitions = 5
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 0 A (0 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = -1.668e-05 A (834 particles)
+    beam to boundary 6 = -5.76e-06 A (288 particles)
+    beam to boundary 7 = -0.00162314 A (81157 particles)
+    beam to boundary 8 = 0 A (0 particles)
+    beam to boundary 9 = -0.00035432 A (17716 particles)
+    total steps = 3890152
+    steps per particle (ave) = 38.9015
+  time used = 23.1668 s (6.20224 s realtime)
+Iteration round 1
+  Epot error = 13.6006 V (max)
+  Space charge error = 8.588e-07 C/m3 (max)
+Epot max error = 13.6006 V
+Epot L2 norm = 9375.11 V
+Solving problem
+  dof = 16957537
+  Using BiCGSTAB-ILU0 solver (imax = 10000, eps = 0.05)
+  
+  error estimate = 0.0445294
+  iterations = 0
+  time used = 3.12942 s (3.12996 s realtime)
+Calculating efield
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+  100000 / 100000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (100000 total):
+    flown = 99859
+    time limited = 0
+    step count limited = 16
+    bad definitions = 125
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 9.2e-07 A (46 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = 6.2e-06 A (310 particles)
+    beam to boundary 6 = 8.4e-06 A (420 particles)
+    beam to boundary 7 = 1.52e-06 A (76 particles)
+    beam to boundary 8 = 0.0019801 A (99005 particles)
+    beam to boundary 9 = 4e-08 A (2 particles)
+    total steps = 6939262
+    steps per particle (ave) = 69.3926
+  time used = 37.4877 s (10.0187 s realtime)
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+  100000 / 100000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (100000 total):
+    flown = 100000
+    time limited = 0
+    step count limited = 0
+    bad definitions = 0
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 0 A (0 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = -1.68e-05 A (840 particles)
+    beam to boundary 6 = -6.04e-06 A (302 particles)
+    beam to boundary 7 = -0.00162432 A (81216 particles)
+    beam to boundary 8 = 0 A (0 particles)
+    beam to boundary 9 = -0.00035284 A (17642 particles)
+    total steps = 3894675
+    steps per particle (ave) = 38.9468
+  time used = 22.3775 s (5.94327 s realtime)
+Iteration round 2
+  Epot error = 0 V (max)
+  Space charge error = 1.19392e-06 C/m3 (max)
+Epot max error = 0 V
+Epot L2 norm = 0 V
+Solving problem
+  dof = 16957537
+  Using BiCGSTAB-ILU0 solver (imax = 10000, eps = 0.05)
+  
+  error estimate = 0.0445332
+  iterations = 0
+  time used = 3.09915 s (3.09963 s realtime)
+Calculating efield
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+  100000 / 100000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (100000 total):
+    flown = 99875
+    time limited = 0
+    step count limited = 13
+    bad definitions = 112
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 1.1e-06 A (55 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = 6.04e-06 A (302 particles)
+    beam to boundary 6 = 8.4e-06 A (420 particles)
+    beam to boundary 7 = 1.34e-06 A (67 particles)
+    beam to boundary 8 = 0.00198062 A (99031 particles)
+    beam to boundary 9 = 0 A (0 particles)
+    total steps = 7018371
+    steps per particle (ave) = 70.1837
+  time used = 33.4181 s (8.75736 s realtime)
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+  100000 / 100000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (100000 total):
+    flown = 99996
+    time limited = 0
+    step count limited = 0
+    bad definitions = 4
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 0 A (0 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = -1.664e-05 A (832 particles)
+    beam to boundary 6 = -6.12e-06 A (306 particles)
+    beam to boundary 7 = -0.00162402 A (81201 particles)
+    beam to boundary 8 = 0 A (0 particles)
+    beam to boundary 9 = -0.00035314 A (17657 particles)
+    total steps = 3891816
+    steps per particle (ave) = 38.9182
+  time used = 20.8382 s (5.46422 s realtime)
+Iteration round 3
+  Epot error = 0 V (max)
+  Space charge error = 1.10471e-06 C/m3 (max)
+Epot max error = 0 V
+Epot L2 norm = 0 V
+Solving problem
+  dof = 16957537
+  Using BiCGSTAB-ILU0 solver (imax = 10000, eps = 0.05)
+  
+  error estimate = 0.0445258
+  iterations = 0
+  time used = 3.10179 s (3.10224 s realtime)
+Calculating efield
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+  100000 / 100000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (100000 total):
+    flown = 99876
+    time limited = 0
+    step count limited = 11
+    bad definitions = 113
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 9.2e-07 A (46 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = 5.84e-06 A (292 particles)
+    beam to boundary 6 = 9.16e-06 A (458 particles)
+    beam to boundary 7 = 1.36e-06 A (68 particles)
+    beam to boundary 8 = 0.00198014 A (99007 particles)
+    beam to boundary 9 = 1e-07 A (5 particles)
+    total steps = 6931826
+    steps per particle (ave) = 69.3183
+  time used = 33.1785 s (8.72226 s realtime)
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+  100000 / 100000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (100000 total):
+    flown = 99994
+    time limited = 0
+    step count limited = 0
+    bad definitions = 6
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 0 A (0 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = -1.706e-05 A (853 particles)
+    beam to boundary 6 = -5.62e-06 A (281 particles)
+    beam to boundary 7 = -0.00162614 A (81307 particles)
+    beam to boundary 8 = 0 A (0 particles)
+    beam to boundary 9 = -0.00035106 A (17553 particles)
+    total steps = 3897897
+    steps per particle (ave) = 38.979
+  time used = 20.0693 s (5.26617 s realtime)
+Iteration round 4
+  Epot error = 0 V (max)
+  Space charge error = 1.04645e-06 C/m3 (max)
+Epot max error = 0 V
+Epot L2 norm = 0 V
+Solving problem
+  dof = 16957537
+  Using BiCGSTAB-ILU0 solver (imax = 10000, eps = 0.05)
+  
+  error estimate = 0.044531
+  iterations = 0
+  time used = 3.09352 s (3.09402 s realtime)
+Calculating efield
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+  100000 / 100000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (100000 total):
+    flown = 99877
+    time limited = 0
+    step count limited = 18
+    bad definitions = 105
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 1.28e-06 A (64 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = 4.94e-06 A (247 particles)
+    beam to boundary 6 = 8.5e-06 A (425 particles)
+    beam to boundary 7 = 1.24e-06 A (62 particles)
+    beam to boundary 8 = 0.00198148 A (99074 particles)
+    beam to boundary 9 = 1e-07 A (5 particles)
+    total steps = 6921924
+    steps per particle (ave) = 69.2192
+  time used = 32.997 s (8.66443 s realtime)
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+  100000 / 100000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (100000 total):
+    flown = 99997
+    time limited = 0
+    step count limited = 0
+    bad definitions = 3
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 0 A (0 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = -1.642e-05 A (821 particles)
+    beam to boundary 6 = -6.48e-06 A (324 particles)
+    beam to boundary 7 = -0.00162162 A (81081 particles)
+    beam to boundary 8 = 0 A (0 particles)
+    beam to boundary 9 = -0.00035542 A (17771 particles)
+    total steps = 3888778
+    steps per particle (ave) = 38.8878
+  time used = 20.0967 s (5.27776 s realtime)
+Iteration round 5
+  Epot error = 0 V (max)
+  Space charge error = 9.44029e-07 C/m3 (max)
+Epot max error = 0 V
+Epot L2 norm = 0 V
+Solving problem
+  dof = 16957537
+  Using BiCGSTAB-ILU0 solver (imax = 10000, eps = 0.05)
+  
+  error estimate = 0.0445342
+  iterations = 0
+  time used = 3.0974 s (3.09792 s realtime)
+Calculating efield
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+  100000 / 100000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (100000 total):
+    flown = 99872
+    time limited = 0
+    step count limited = 9
+    bad definitions = 119
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 1.26e-06 A (63 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = 6.26e-06 A (313 particles)
+    beam to boundary 6 = 8.84e-06 A (442 particles)
+    beam to boundary 7 = 1.14e-06 A (57 particles)
+    beam to boundary 8 = 0.00197988 A (98994 particles)
+    beam to boundary 9 = 6e-08 A (3 particles)
+    total steps = 6942100
+    steps per particle (ave) = 69.421
+  time used = 33.2095 s (8.72729 s realtime)
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+  100000 / 100000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (100000 total):
+    flown = 99995
+    time limited = 0
+    step count limited = 0
+    bad definitions = 5
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 0 A (0 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = -1.652e-05 A (826 particles)
+    beam to boundary 6 = -5.64e-06 A (282 particles)
+    beam to boundary 7 = -0.00162332 A (81166 particles)
+    beam to boundary 8 = 0 A (0 particles)
+    beam to boundary 9 = -0.00035442 A (17721 particles)
+    total steps = 3892564
+    steps per particle (ave) = 38.9256
+  time used = 20.0191 s (5.25808 s realtime)
+Iteration round 6
+  Epot error = 0 V (max)
+  Space charge error = 1.12622e-06 C/m3 (max)
+Epot max error = 0 V
+Epot L2 norm = 0 V
+Solving problem
+  dof = 16957537
+  Using BiCGSTAB-ILU0 solver (imax = 10000, eps = 0.05)
+  
+  error estimate = 0.0445313
+  iterations = 0
+  time used = 3.11346 s (3.11392 s realtime)
+Calculating efield
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+  100000 / 100000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (100000 total):
+    flown = 99852
+    time limited = 0
+    step count limited = 19
+    bad definitions = 129
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 1.12e-06 A (56 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = 5.62e-06 A (281 particles)
+    beam to boundary 6 = 8.96e-06 A (448 particles)
+    beam to boundary 7 = 1.4e-06 A (70 particles)
+    beam to boundary 8 = 0.0019799 A (98995 particles)
+    beam to boundary 9 = 4e-08 A (2 particles)
+    total steps = 6979056
+    steps per particle (ave) = 69.7906
+  time used = 33.1478 s (8.69856 s realtime)
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+  100000 / 100000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (100000 total):
+    flown = 99998
+    time limited = 0
+    step count limited = 0
+    bad definitions = 2
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 0 A (0 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = -1.644e-05 A (822 particles)
+    beam to boundary 6 = -5.66e-06 A (283 particles)
+    beam to boundary 7 = -0.00162754 A (81377 particles)
+    beam to boundary 8 = 0 A (0 particles)
+    beam to boundary 9 = -0.00035032 A (17516 particles)
+    total steps = 3887228
+    steps per particle (ave) = 38.8723
+  time used = 20.0723 s (5.27335 s realtime)
+Iteration round 7
+  Epot error = 0 V (max)
+  Space charge error = 1.012e-06 C/m3 (max)
+Epot max error = 0 V
+Epot L2 norm = 0 V
+Solving problem
+  dof = 16957537
+  Using BiCGSTAB-ILU0 solver (imax = 10000, eps = 0.05)
+  
+  error estimate = 0.0445233
+  iterations = 0
+  time used = 3.10226 s (3.10274 s realtime)
+Calculating efield
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+  100000 / 100000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (100000 total):
+    flown = 99853
+    time limited = 0
+    step count limited = 14
+    bad definitions = 133
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 9.8e-07 A (49 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = 6.22e-06 A (311 particles)
+    beam to boundary 6 = 7.94e-06 A (397 particles)
+    beam to boundary 7 = 1.1e-06 A (55 particles)
+    beam to boundary 8 = 0.0019808 A (99040 particles)
+    beam to boundary 9 = 2e-08 A (1 particles)
+    total steps = 6929448
+    steps per particle (ave) = 69.2945
+  time used = 33.4982 s (8.80061 s realtime)
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+  100000 / 100000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (100000 total):
+    flown = 99998
+    time limited = 0
+    step count limited = 0
+    bad definitions = 2
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 0 A (0 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = -1.514e-05 A (757 particles)
+    beam to boundary 6 = -5.2e-06 A (260 particles)
+    beam to boundary 7 = -0.00162852 A (81426 particles)
+    beam to boundary 8 = 0 A (0 particles)
+    beam to boundary 9 = -0.0003511 A (17555 particles)
+    total steps = 3892576
+    steps per particle (ave) = 38.9258
+  time used = 20.2574 s (5.32261 s realtime)
+Iteration round 8
+  Epot error = 0 V (max)
+  Space charge error = 1.15926e-06 C/m3 (max)
+Epot max error = 0 V
+Epot L2 norm = 0 V
+Solving problem
+  dof = 16957537
+  Using BiCGSTAB-ILU0 solver (imax = 10000, eps = 0.05)
+  
+  error estimate = 0.0445237
+  iterations = 0
+  time used = 3.10494 s (3.10554 s realtime)
+Calculating efield
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+  100000 / 100000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (100000 total):
+    flown = 99865
+    time limited = 0
+    step count limited = 20
+    bad definitions = 115
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 1.26e-06 A (63 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = 5.42e-06 A (271 particles)
+    beam to boundary 6 = 7.84e-06 A (392 particles)
+    beam to boundary 7 = 1.44e-06 A (72 particles)
+    beam to boundary 8 = 0.0019813 A (99065 particles)
+    beam to boundary 9 = 4e-08 A (2 particles)
+    total steps = 6951677
+    steps per particle (ave) = 69.5168
+  time used = 33.1535 s (8.69611 s realtime)
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+  100000 / 100000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (100000 total):
+    flown = 99999
+    time limited = 0
+    step count limited = 0
+    bad definitions = 1
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 0 A (0 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = -1.75e-05 A (875 particles)
+    beam to boundary 6 = -6.08e-06 A (304 particles)
+    beam to boundary 7 = -0.00162578 A (81289 particles)
+    beam to boundary 8 = 0 A (0 particles)
+    beam to boundary 9 = -0.00035062 A (17531 particles)
+    total steps = 3894342
+    steps per particle (ave) = 38.9434
+  time used = 20.1817 s (5.29399 s realtime)
+Iteration round 9
+  Epot error = 0 V (max)
+  Space charge error = 9.52609e-07 C/m3 (max)
+Epot max error = 0 V
+Epot L2 norm = 0 V
+Plotting to PNG-file "run10/trajdens_xy.png"
+Plotting to PNG-file "run10/trajdens_xz.png"
+Plotting to PNG-file "run10/trajdens_yz_x0.png"
+Plotting to PNG-file "run10/epot_xy.png"
+Plotting to PNG-file "run10/epot_xz.png"
+Plotting to PNG-file "run10/epot_yz_x0.png"
+Ending simulation
+  time used = 835.185 s (427.132 s realtime)

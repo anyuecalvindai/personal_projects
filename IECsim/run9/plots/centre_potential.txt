@@ -1,0 +1,15 @@
+x axis: average potential at r=0 = nan V
+Empty DataFrame
+Columns: [iteration, potential]
+Index: []
+
+y axis: average potential at r=0 = nan V
+Empty DataFrame
+Columns: [iteration, potential]
+Index: []
+
+z axis: average potential at r=0 = nan V
+Empty DataFrame
+Columns: [iteration, potential]
+Index: []
+

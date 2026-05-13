@@ -141,7 +141,7 @@ double epot_max_error(const EpotField &epot, const EpotField &epot_old) {//compu
 // }
 
 void sim(int argc, char **argv){
-    string run = "run10/";
+    string run = "run9/";
 
     string geom_fn = "geom.dat";
     ifstream is_geom(geom_fn.c_str());
@@ -220,7 +220,7 @@ void sim(int argc, char **argv){
 
 
     //MAIN SELF-CONSISTENT LOOP
-    while (j <= 10) {
+    while (error < error_thresh && j <= n_iter) {
         solver.solve(epot, scharge);
         efield.recalculate();
         scharge.clear();

@@ -1,0 +1,5 @@
+RMS epot error across all iterations: nan V
+Mean epot error: nan V
+Max epot error: nan V
+Min epot error: nan V
+Number of iterations: 0
