@@ -37,6 +37,7 @@ z-long tube
 #include "error.hpp"
 #include "particlediagplotter.hpp"
 #include "geomplotter.hpp"
+#include "particlegraph.hpp"
 #include "config.h"
 #include "stl_solid.hpp"
 #include "particles.hpp"
@@ -44,20 +45,20 @@ z-long tube
 using namespace std;
 
 const double beam_current = 0.002;   // 2mA ions
-const long N_clouds = 100000;
+const long N_clouds = 800000;
 const double IQ = beam_current/((double) N_clouds);
 //const double m = 28.0134; //nitrogen molecule
 const double m = 2.0141017778; //deuterium
 
 const double beam_current_e = 0.002; // 2mA electrons
-const long N_clouds_e = 100000;
+const long N_clouds_e = N_clouds;
 const double IQ_e = beam_current_e / ((double) N_clouds_e);
 const double m_e = 0.000548579909;   // electron mass in amu
 
 const double q = 1;
 
 double h = 0.0003;
-double cathodepot = -5000.0;
+double cathodepot = -100000.0;            // -100kV cathode
 double anodepot = 0.0;
 double anode_r = 15*1.33 * 1e-3;
 const double cathode_r = 0.005;      // 5mm cathode radius
@@ -141,7 +142,7 @@ double epot_max_error(const EpotField &epot, const EpotField &epot_old) {//compu
 // }
 
 void sim(int argc, char **argv){
-    string run = "run10/";
+    string run = "run18/";
 
     string geom_fn = "geom.dat";
     ifstream is_geom(geom_fn.c_str());
@@ -198,7 +199,7 @@ void sim(int argc, char **argv){
     
     double error = 1e10; //large initial number to make sure solver iterates twice.
     int j = 1;
-    double error_thresh = 5.0; //volts. corresponds to 0.1% error with 5kV
+    double error_thresh = 0.001 * fabs(cathodepot); //volts. corresponds to 0.1% error with 5kV
 
 
     ofstream osteps(run + "trajectory_steps.dat");
@@ -220,7 +221,7 @@ void sim(int argc, char **argv){
 
 
     //MAIN SELF-CONSISTENT LOOP
-    while (j <= 10) {
+    while (error > error_thresh && j <= 10) {
         solver.solve(epot, scharge);
         efield.recalculate();
         scharge.clear();
@@ -271,23 +272,58 @@ void sim(int argc, char **argv){
     MeshScalarField tdens(geom);
     pdb.build_trajectory_density_field(tdens);
 
-    gplotter.set_epot(&epot);
-    gplotter.set_particle_database(&pdb);
-    gplotter.set_particle_div(1);
-    gplotter.set_trajdens(&tdens);
-    gplotter.set_fieldgraph_plot(FIELD_TRAJDENS);
+    // Plot 1: Ions only (default colour - red)
+    GeomPlotter gplotter_ions(geom);
+    gplotter_ions.set_size(2048, 2048);
+    gplotter_ions.set_epot(&epot);
+    gplotter_ions.set_particle_database(&pdb);
+    gplotter_ions.set_particle_div(1000, 0);
+    gplotter_ions.set_qm_discretation(false);
+    gplotter_ions.set_fieldgraph_plot(FIELD_TRAJDENS);
+    gplotter_ions.set_trajdens(&tdens);
 
-    gplotter.set_view(VIEW_XY, -1);
-    gplotter.set_ranges(-0.05, -0.05, 0.05, 0.05);
-    gplotter.plot_png((run + "trajdens_xy.png").c_str());
+    gplotter_ions.set_view(VIEW_XY, -1);
+    gplotter_ions.set_ranges(-0.05, -0.05, 0.05, 0.05);
+    gplotter_ions.plot_png((run + "trajdens_ions_xy.png").c_str());
 
-    gplotter.set_view(VIEW_XZ, -1);
-    gplotter.set_ranges(-0.05, -0.05, 0.05, 0.05);
-    gplotter.plot_png((run + "trajdens_xz.png").c_str());
+    gplotter_ions.set_view(VIEW_XZ, -1);
+    gplotter_ions.set_ranges(-0.05, -0.05, 0.05, 0.05);
+    gplotter_ions.plot_png((run + "trajdens_ions_xz.png").c_str());
 
-    gplotter.set_view(VIEW_YZ, 105);
-    gplotter.set_ranges(-0.05, -0.05, 0.05, 0.05);
-    gplotter.plot_png((run + "trajdens_yz_x0.png").c_str());
+    gplotter_ions.set_view(VIEW_YZ, 105);
+    gplotter_ions.set_ranges(-0.05, -0.05, 0.05, 0.05);
+    gplotter_ions.plot_png((run + "trajdens_ions_yz_x0.png").c_str());
+
+    // Plot 2: Electrons only - qm_discretation(true) so electron colour index
+    // differs from ion colour index (cannot set explicit blue: clear_colors/
+    // add_color are on ParticleGraph but not exposed via GeomPlotter).
+    MeshScalarField tdens_e(geom);
+    pdb_e.build_trajectory_density_field(tdens_e);
+
+    GeomPlotter gplotter_electrons(geom);
+    gplotter_electrons.set_size(2048, 2048);
+    gplotter_electrons.set_epot(&epot);
+    gplotter_electrons.set_particle_database(&pdb_e);
+    gplotter_electrons.set_particle_div(1000, 0);
+    gplotter_electrons.set_qm_discretation(true);
+    gplotter_electrons.set_fieldgraph_plot(FIELD_TRAJDENS);
+    gplotter_electrons.set_trajdens(&tdens_e);
+
+    gplotter_electrons.set_view(VIEW_XY, -1);
+    gplotter_electrons.set_ranges(-0.05, -0.05, 0.05, 0.05);
+    gplotter_electrons.plot_png((run + "trajdens_electrons_xy.png").c_str());
+
+    gplotter_electrons.set_view(VIEW_XZ, -1);
+    gplotter_electrons.set_ranges(-0.05, -0.05, 0.05, 0.05);
+    gplotter_electrons.plot_png((run + "trajdens_electrons_xz.png").c_str());
+
+    gplotter_electrons.set_view(VIEW_YZ, 105);
+    gplotter_electrons.set_ranges(-0.05, -0.05, 0.05, 0.05);
+    gplotter_electrons.plot_png((run + "trajdens_electrons_yz_x0.png").c_str());
+
+    // Plot 3 (combined ions + electrons) is produced by
+    // postprocessscripts/trajdens_combined.py since GeomPlotter does not
+    // expose direct ParticleGraph colour control.
 
     gplotter.set_particle_database(NULL);
     gplotter.set_trajdens(NULL);

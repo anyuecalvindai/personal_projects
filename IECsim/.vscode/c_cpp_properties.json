@@ -4,14 +4,21 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/home/cdai009/include/ibsimu-1.0.6dev",
-                "/usr/include/cairo"
+                "/home/calvindai1234/include/ibsimu-1.0.6dev",
+                "/home/calvindai1234/include/**",
+                "/usr/include/cairo",
+                "/usr/include/freetype2",
+                "/usr/include/gsl",
+                "/usr/include/gtk-3.0",
+                "/usr/include/glib-2.0",
+                "/usr/lib/x86_64-linux-gnu/glib-2.0/include",
+                "/usr/include"
             ],
             "defines": [],
-            "compilerPath": "/usr/bin/gcc",
+            "compilerPath": "/usr/bin/g++",
             "cStandard": "c17",
-            "cppStandard": "gnu++17",
-            "intelliSenseMode": "linux-gcc-arm64"
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-x64"
         }
     ],
     "version": 4

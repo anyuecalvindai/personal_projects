@@ -13,4 +13,5 @@ python postprocessscripts/centralheight.py
 python postprocessscripts/epot_error_rms.py
 python postprocessscripts/memory_estimate.py
 python postprocessscripts/timestep_animation.py
+python postprocessscripts/trajdens_combined.py
 #python postprocessscripts/particle_animation.py

@@ -1,0 +1,5 @@
+RMS epot error across all iterations: 4.5323 V
+Mean epot error: 1.5108 V
+Max epot error: 13.5968 V
+Min epot error: 0.0000 V
+Number of iterations: 9

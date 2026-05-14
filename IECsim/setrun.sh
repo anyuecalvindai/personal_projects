@@ -12,3 +12,4 @@ sed -i "s|run = '[^']*'|run = '${RUN}/'|" postprocessscripts/epot_error_rms.py
 sed -i "s|run = '[^']*'|run = '${RUN}/'|" postprocessscripts/memory_estimate.py
 sed -i "s|run = '[^']*'|run = '${RUN}/'|" postprocessscripts/timestep_animation.py
 sed -i "s|run = '[^']*'|run = '${RUN}/'|" postprocessscripts/particle_animation.py
+sed -i "s|run = '[^']*'|run = '${RUN}/'|" postprocessscripts/trajdens_combined.py
