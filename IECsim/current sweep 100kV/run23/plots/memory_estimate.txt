@@ -1,0 +1,18 @@
+# Memory breakdown for run23/
+# N_clouds (ions)     = 800000
+# N_clouds_e (electrons) = 800000
+# bytes/particle = 108, bytes/step = 56
+# Mesh nodes = 17808000 (4 scalar + 1 vector(3) fields)
+# Mesh-field memory     = 0.929 GB
+# Solver workspace est. = 1.858 GB
+# Geometry est.         = 0.066 GB
+# Constant overhead total = 2.853 GB
+# Particle data (constant)  = 0.161 GB
+#
+# iter  ion_steps  e_steps  traj_MB  overhead_MB  total_GB
+     1     81797845     31866975    6070.36      3085.88    8.9416
+     2     90783588     41589393    7069.48      3085.88    9.9173
+     3     90368935     40876098    7009.24      3085.88    9.8585
+     4     90068181     41336633    7017.77      3085.88    9.8668
+     5     90360477     41288730    7030.83      3085.88    9.8796
+     6     90061137     41327225    7016.90      3085.88    9.8660

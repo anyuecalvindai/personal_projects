@@ -13,7 +13,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from PIL import Image
 
-run = 'run18/'
+run = 'run25/'
 plots_dir = run + 'plots/'
 os.makedirs(plots_dir, exist_ok=True)
 

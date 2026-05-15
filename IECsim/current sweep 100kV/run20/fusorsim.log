@@ -1,0 +1,145 @@
+Ion Beam Simulator 1.0.6dev (89c1280, Thu Oct 26 17:14:45 2023 +0300)
+Constructing Geometry from stream
+  Warning: loading of STLSolid not implemented
+  Warning: loading of STLSolid not implemented
+  Warning: loading of STLSolid not implemented
+Building surface triangulation
+  814968 triangles
+  410197 vertices
+  Done.
+  time used = 0.34675 s (0.346818 s realtime)
+Calculating efield
+Solving problem
+  dof = 16957537
+  Using BiCGSTAB-ILU0 solver (imax = 10000, eps = 0.05)
+        0         1.024000e+05        1         3.569577e+02        2         1.924326e+02        3         1.282404e+02        4         9.518208e+01        5         7.286367e+01        6         5.530548e+01        7         4.247816e+01        8         3.377224e+01        9         2.764529e+01       10         2.393635e+01       11         2.172941e+01       12         1.983000e+01       13         1.802604e+01       14         1.620112e+01       15         1.444115e+01       16         1.295474e+01       17         1.180045e+01       18         1.104832e+01       19         1.047474e+01       20         9.944320e+00       21         9.399346e+00       22         8.769203e+00       23         8.047390e+00       24         7.245543e+00       25         6.474158e+00       26         5.788146e+00       27         5.258324e+00       28         4.845266e+00       29         4.509847e+00       30         4.207516e+00       31         3.910430e+00       32         3.608116e+00       33         3.305752e+00       34         3.023900e+00       35         2.784319e+00       36         2.592162e+00       37         2.424739e+00       38         2.286086e+00       39         2.078628e+00       40         2.063905e+00       41         1.990695e+00       42         1.616426e+00       43         1.626015e+00       44         1.571327e+00       45         1.376622e+00       46         1.216328e+00       47         1.125828e+00       48         9.415397e-01       49         1.012790e+00       50         9.757830e-01       51         8.897903e-01       52         9.252105e-01       53         7.166391e-01       54         6.070665e-01       55         6.258728e-01       56         6.223526e-01       57         5.521906e-01       58         5.559379e-01       59         5.511556e-01       60         4.976793e-01       61         4.675559e-01       62         4.655480e-01       63         3.525460e-01       64         3.415982e-01       65         3.181429e-01       66         3.167408e-01       67         2.959755e-01       68         2.795509e-01       69         2.622863e-01       70         3.925107e-01       71         2.741778e-01       72         1.954076e-01       73         1.855454e-01       74         2.240042e-01       75         1.574000e-01       76         1.516808e-01       77         3.501239e-01       78         1.237884e-01       79         1.176814e-01       80         1.018567e-01       81         9.754635e-02       82         6.562942e-02       83         7.980766e-02       84         6.914040e-02       85         6.140236e-02       86         6.552934e-02       87         6.387070e-02       88         5.766238e-02       89         5.693667e-02       90         5.680535e-02       91         5.519650e-02       92         5.137221e-02       93         4.860540e-02  
+  error estimate = 0.0486054
+  iterations = 93
+  time used = 131.655 s (131.69 s realtime)
+Calculating efield
+Plotting to PNG-file "run20/epot_xy_initial.png"
+Plotting to PNG-file "run20/epot_xz_initial.png"
+Plotting to PNG-file "run20/epot_yz_x0_initial.png"
+Solving problem
+  dof = 16957537
+  Using BiCGSTAB-ILU0 solver (imax = 10000, eps = 0.05)
+  
+  error estimate = 0.0486054
+  iterations = 0
+  time used = 3.09964 s (3.10024 s realtime)
+Calculating efield
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+    0 / 800000    10061 / 800000    19983 / 800000    30104 / 800000    40404 / 800000    50510 / 800000    60574 / 800000    69689 / 800000    79273 / 800000    88982 / 800000    98980 / 800000    108932 / 800000    118764 / 800000    128459 / 800000    138050 / 800000    147689 / 800000    157176 / 800000    166351 / 800000    175557 / 800000    184670 / 800000    194140 / 800000    203411 / 800000    212438 / 800000    221424 / 800000    230853 / 800000    240104 / 800000    249123 / 800000    258089 / 800000    267560 / 800000    276889 / 800000    286331 / 800000    295766 / 800000    304723 / 800000    313876 / 800000    323138 / 800000    332383 / 800000    341727 / 800000    350526 / 800000    359778 / 800000    369189 / 800000    378423 / 800000    387370 / 800000    396447 / 800000    406028 / 800000    415367 / 800000    424700 / 800000    434085 / 800000    443520 / 800000    452810 / 800000    462022 / 800000    471071 / 800000    480339 / 800000    490004 / 800000    499338 / 800000    508799 / 800000    517688 / 800000    526358 / 800000    535705 / 800000    545504 / 800000    555274 / 800000    565056 / 800000    574578 / 800000    583338 / 800000    592337 / 800000    602042 / 800000    611584 / 800000    621353 / 800000    630952 / 800000    640062 / 800000    649612 / 800000    658964 / 800000    668530 / 800000    677700 / 800000    687179 / 800000    697477 / 800000    707707 / 800000    717899 / 800000    728234 / 800000    738354 / 800000    748342 / 800000    758477 / 800000    768493 / 800000    778537 / 800000    788514 / 800000    798427 / 800000    800000 / 800000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (800000 total):
+    flown = 798549
+    time limited = 0
+    step count limited = 560
+    bad definitions = 895
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 3.9125e-05 A (313 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = 0.000287 A (2296 particles)
+    beam to boundary 6 = 0.00042175 A (3374 particles)
+    beam to boundary 7 = 7.45e-05 A (596 particles)
+    beam to boundary 8 = 0.0989939 A (791951 particles)
+    beam to boundary 9 = 2.375e-06 A (19 particles)
+    total steps = 81696795
+    steps per particle (ave) = 102.121
+  time used = 322.801 s (84.2139 s realtime)
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+    0 / 800000    18266 / 800000    36737 / 800000    55280 / 800000    73539 / 800000    92104 / 800000    110718 / 800000    129295 / 800000    147962 / 800000    166394 / 800000    184881 / 800000    203355 / 800000    221961 / 800000    240627 / 800000    259269 / 800000    277984 / 800000    296550 / 800000    315164 / 800000    334003 / 800000    352475 / 800000    370906 / 800000    389188 / 800000    407658 / 800000    426133 / 800000    444494 / 800000    462856 / 800000    481309 / 800000    499766 / 800000    518162 / 800000    536515 / 800000    554870 / 800000    573219 / 800000    591361 / 800000    609770 / 800000    628050 / 800000    646565 / 800000    664967 / 800000    683297 / 800000    701779 / 800000    720302 / 800000    738865 / 800000    757299 / 800000    775343 / 800000    793500 / 800000    800000 / 800000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (800000 total):
+    flown = 799970
+    time limited = 0
+    step count limited = 0
+    bad definitions = 30
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 0 A (0 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = -0.000841875 A (6735 particles)
+    beam to boundary 6 = -0.000272 A (2176 particles)
+    beam to boundary 7 = -0.0811709 A (649367 particles)
+    beam to boundary 8 = 0 A (0 particles)
+    beam to boundary 9 = -0.0177115 A (141692 particles)
+    total steps = 31847649
+    steps per particle (ave) = 39.8096
+  time used = 165.84 s (43.3971 s realtime)
+Iteration round 0
+  Epot error = 0 V (max)
+  Space charge error = 0 C/m3 (max)
+Solving problem
+  dof = 16957537
+  Using BiCGSTAB-ILU0 solver (imax = 10000, eps = 0.05)
+  
+  error estimate = 0.0493501
+  iterations = 0
+  time used = 3.10329 s (3.10391 s realtime)
+Calculating efield
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+    0 / 800000    10230 / 800000    20355 / 800000    30491 / 800000    40810 / 800000    50931 / 800000    61050 / 800000    71187 / 800000    80975 / 800000    91025 / 800000    101336 / 800000    111365 / 800000    121472 / 800000    131263 / 800000    141238 / 800000    151366 / 800000    161531 / 800000    171718 / 800000    181608 / 800000    191524 / 800000    201757 / 800000    211657 / 800000    221473 / 800000    231561 / 800000    241577 / 800000    251354 / 800000    261698 / 800000    271704 / 800000    281788 / 800000    291924 / 800000    301852 / 800000    311815 / 800000    321792 / 800000    331569 / 800000    341740 / 800000    351969 / 800000    361822 / 800000    371938 / 800000    381948 / 800000    391877 / 800000    402008 / 800000    411908 / 800000    421905 / 800000    431964 / 800000    441916 / 800000    452069 / 800000    462107 / 800000    472098 / 800000    482104 / 800000    492228 / 800000    502484 / 800000    512548 / 800000    522361 / 800000    532291 / 800000    542247 / 800000    552397 / 800000    562507 / 800000    572651 / 800000    582634 / 800000    592636 / 800000    602654 / 800000    612639 / 800000    622719 / 800000    632727 / 800000    642609 / 800000    652588 / 800000    662675 / 800000    672730 / 800000    682568 / 800000    692371 / 800000    702150 / 800000    712102 / 800000    722215 / 800000    732317 / 800000    742171 / 800000    752148 / 800000    762174 / 800000    772002 / 800000    781987 / 800000    791944 / 800000    800000 / 800000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (800000 total):
+    flown = 798538
+    time limited = 0
+    step count limited = 593
+    bad definitions = 872
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 3.6625e-05 A (293 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = 0.000272625 A (2181 particles)
+    beam to boundary 6 = 0.000414125 A (3313 particles)
+    beam to boundary 7 = 7e-05 A (560 particles)
+    beam to boundary 8 = 0.0990219 A (792175 particles)
+    beam to boundary 9 = 2e-06 A (16 particles)
+    total steps = 81771214
+    steps per particle (ave) = 102.214
+  time used = 308.533 s (79.8638 s realtime)
+Calculating particle trajectories
+  Using surface collision model
+  Using non-relativistic iterator
+    0 / 800000    18626 / 800000    37215 / 800000    55869 / 800000    74462 / 800000    93101 / 800000    111829 / 800000    130465 / 800000    149055 / 800000    167622 / 800000    186304 / 800000    205004 / 800000    223626 / 800000    242510 / 800000    261275 / 800000    280209 / 800000    299104 / 800000    317824 / 800000    336570 / 800000    355372 / 800000    373852 / 800000    392580 / 800000    411047 / 800000    429717 / 800000    448368 / 800000    467161 / 800000    485605 / 800000    504085 / 800000    522560 / 800000    540902 / 800000    559486 / 800000    578197 / 800000    596740 / 800000    615168 / 800000    633531 / 800000    651941 / 800000    670416 / 800000    688938 / 800000    707393 / 800000    725847 / 800000    742742 / 800000    758002 / 800000    773127 / 800000    788451 / 800000    800000 / 800000 Done
+  Finalizing space charge density map (PIC method)
+  Particle histories (800000 total):
+    flown = 799977
+    time limited = 0
+    step count limited = 0
+    bad definitions = 23
+    beam to boundary 1 = 0 A (0 particles)
+    beam to boundary 2 = 0 A (0 particles)
+    beam to boundary 3 = 0 A (0 particles)
+    beam to boundary 4 = 0 A (0 particles)
+    beam to boundary 5 = -0.00082125 A (6570 particles)
+    beam to boundary 6 = -0.000285 A (2280 particles)
+    beam to boundary 7 = -0.0812221 A (649777 particles)
+    beam to boundary 8 = 0 A (0 particles)
+    beam to boundary 9 = -0.0176688 A (141350 particles)
+    total steps = 31854741
+    steps per particle (ave) = 39.8184
+  time used = 167.157 s (43.7956 s realtime)
+Iteration round 1
+  Epot error = 0 V (max)
+  Space charge error = 3.85669e-06 C/m3 (max)
+Epot max error = 0 V
+Epot L2 norm = 0 V
+Plotting to PNG-file "run20/trajdens_ions_xy.png"
+Plotting to PNG-file "run20/trajdens_ions_xz.png"
+Plotting to PNG-file "run20/trajdens_ions_yz_x0.png"
+Plotting to PNG-file "run20/trajdens_electrons_xy.png"
+Plotting to PNG-file "run20/trajdens_electrons_xz.png"
+Plotting to PNG-file "run20/trajdens_electrons_yz_x0.png"
+Plotting to PNG-file "run20/epot_xy.png"
+Plotting to PNG-file "run20/epot_xz.png"
+Plotting to PNG-file "run20/epot_yz_x0.png"
+Ending simulation
+  time used = 1149.88 s (436.866 s realtime)

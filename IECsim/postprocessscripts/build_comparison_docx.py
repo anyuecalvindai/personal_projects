@@ -73,16 +73,23 @@ AXIS_LABELS = {
 
 
 def parse_central_potential(run):
-    import re
-    p = os.path.join(run, "plots", "centre_potential.txt")
-    if not os.path.exists(p):
-        return None
+    """Reads final-iteration V(r=0) per axis from potential_radial_*_all.dat.
+    The legacy centre_potential.txt average pools vacuum + converged values
+    and is unreliable when the loop needs >1 iter for self-consistency."""
     vals = {}
-    with open(p) as f:
-        for line in f:
-            m = re.match(r"(\w) axis: average potential at r=0 = (-?[\d.]+) V", line)
-            if m:
-                vals[m.group(1)] = float(m.group(2))
+    for axis in ("x", "y", "z"):
+        src = os.path.join(run, f"potential_radial_{axis}_all.dat")
+        if not os.path.exists(src):
+            continue
+        df = pd.read_csv(src, sep=r"\s+", comment="#", header=None,
+                         names=["iteration", "r", "potential"])
+        if df.empty:
+            continue
+        last_iter = df["iteration"].max()
+        d = df[df["iteration"] == last_iter]
+        center = d[d["r"].abs() < 1e-10]
+        if len(center):
+            vals[axis] = float(center["potential"].iloc[0])
     return vals if vals else None
 
 

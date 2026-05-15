@@ -3,7 +3,7 @@ import re
 from glob import glob
 import imageio.v2 as imageio
 
-run = 'run18/'
+run = 'run25/'
 plots = run + 'plots/'
 pics = run + 'timestep_pics/'
 
