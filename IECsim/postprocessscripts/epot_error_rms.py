@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 
-run = 'run25/'
+run = 'run_io_10mA/'
 plots = run + 'plots/'
 os.makedirs(plots, exist_ok=True)
 

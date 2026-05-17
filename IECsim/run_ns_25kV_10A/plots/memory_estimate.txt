@@ -1,0 +1,17 @@
+# Memory breakdown for run_ns_25kV_10A/
+# N_clouds (ions)     = 800000
+# N_clouds_e (electrons) = 800000
+# bytes/particle = 108, bytes/step = 56
+# Mesh nodes = 17808000 (4 scalar + 1 vector(3) fields)
+# Mesh-field memory     = 0.929 GB
+# Solver workspace est. = 1.858 GB
+# Geometry est.         = 0.066 GB
+# Constant overhead total = 2.853 GB
+# Particle data (constant)  = 0.161 GB
+#
+# iter  ion_steps  e_steps  traj_MB  overhead_MB  total_GB
+     1    158545248     27890893    9956.76      3085.88   12.7370
+     2    154597851     29238666    9817.93      3085.88   12.6014
+     3    152709906     29801466    9747.16      3085.88   12.5323
+     4    150776456     30148184    9662.42      3085.88   12.4495
+     5    149953884     30360962    9629.85      3085.88   12.4177

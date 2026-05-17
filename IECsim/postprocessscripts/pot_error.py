@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 
-run = 'run25/'
+run = 'run_io_50A/'
 plots = run + 'plots/'
 os.makedirs(plots, exist_ok=True)
 

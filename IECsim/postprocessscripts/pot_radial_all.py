@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
-run = 'run25/'
+run = 'run_io_50A/'
 plots = run + 'plots/'
 os.makedirs(plots, exist_ok=True)
 

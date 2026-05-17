@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-run = 'run25/'
+run = 'run_io_50A/'
 plots = run + 'plots/'
 os.makedirs(plots, exist_ok=True)
 

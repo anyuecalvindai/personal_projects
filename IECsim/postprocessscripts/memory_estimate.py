@@ -1,7 +1,7 @@
 import os
 import re
 
-run = 'run25/'
+run = 'run_io_50A/'
 
 
 def parse_n_clouds(cpp_path):

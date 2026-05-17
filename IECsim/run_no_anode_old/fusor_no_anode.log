@@ -1,0 +1,53 @@
+Ion Beam Simulator 1.0.6dev (89c1280, Thu Oct 26 17:14:45 2023 +0300)
+Constructing geometry
+  origo     =     -0.03175       -0.048     -0.03175
+  size      =          265          320          210
+  max       =      0.04745       0.0477      0.03095
+  h         = 0.0003
+  nodecount = 17808000
+  Done
+Defining electrode from STL file 'cad_70_transp/tee_or.stl'
+  Reading STL-file 'cad_70_transp/tee_or.stl'
+    Making vertex connections
+    vertexc = 1280
+    trianglec = 2564
+  bbox min =     -0.03175       -0.048     -0.03175
+  bbox max =        0.048        0.048      0.03175
+Defining electrode from STL file 'cad_70_transp/cathodegridnostalk_or.stl'
+  Reading STL-file 'cad_70_transp/cathodegridnostalk_or.stl'
+    Making vertex connections
+    vertexc = 62196
+    trianglec = 124416
+  bbox min =      -0.0055      -0.0055      -0.0055
+  bbox max =       0.0055       0.0055       0.0055
+Building mesh
+  Done. Built mesh with:
+  15864421 pure vacuum nodes
+  389899 near solid nodes
+  352205 neumann nodes
+  1201475 dirichlet nodes
+  1198918 solid 7 nodes
+  2557 solid 8 nodes
+  time used = 804.733 s (208.591 s realtime)
+Building surface triangulation
+  1102230 triangles
+  553310 vertices
+  Done.
+  time used = 0.436118 s (0.436164 s realtime)
+Saving Geometry to file 'geom_cat_only.dat'.
+Warning: saving of STLSolid not implemented
+Warning: saving of STLSolid not implemented
+Calculating efield
+Solving problem
+  dof = 16606525
+  Using BiCGSTAB-ILU0 solver (imax = 10000, eps = 0.05)
+        0         1.024000e+05        1         3.569577e+02        2         1.924326e+02        3         1.282404e+02        4         9.518208e+01        5         7.286367e+01        6         5.530548e+01        7         4.247816e+01        8         3.377224e+01        9         2.764529e+01       10         2.393635e+01       11         2.172941e+01       12         1.983000e+01       13         1.802604e+01       14         1.620113e+01       15         1.444122e+01       16         1.295517e+01       17         1.180275e+01       18         1.105624e+01       19         1.049646e+01       20         9.994215e+00       21         9.499022e+00       22         8.955780e+00       23         8.375783e+00       24         7.791191e+00       25         7.293548e+00       26         6.905316e+00       27         6.626984e+00       28         6.399529e+00       29         6.185124e+00       30         5.957638e+00       31         5.707623e+00       32         5.443276e+00       33         5.181982e+00       34         4.951446e+00       35         4.761032e+00       36         4.609599e+00       37         4.428727e+00       38         7.093987e+00       39         4.623700e+00       40         3.519840e+00       41         3.401205e+00       42         3.178175e+00       43         3.092182e+00       44         3.146440e+00       45         2.895327e+00       46         2.588819e+00       47         2.305976e+00       48         2.156841e+00       49         2.205045e+00       50         1.959357e+00       51         1.964477e+00       52         1.850854e+00       53         1.496301e+00       54         1.462799e+00       55         1.428323e+00       56         1.319452e+00       57         1.334486e+00       58         1.304453e+00       59         1.133533e+00       60         1.462989e+00       61         9.357102e-01       62         8.531196e-01       63         8.342642e-01       64         8.197304e-01       65         7.843349e-01       66         7.298634e-01       67         7.303943e-01       68         6.897254e-01       69         6.554326e-01       70         6.014199e-01       71         6.128689e-01       72         5.969983e-01       73         5.331118e-01       74         6.307930e+00       75         4.899785e-01       76         4.718982e-01       77         4.397661e-01       78         4.271303e-01       79         3.137458e-01       80         3.928777e-01       81         3.834781e-01       82         3.496561e-01       83         3.469194e-01       84         3.448742e-01       85         3.083710e-01       86         3.087902e-01       87         3.077699e-01       88         2.727883e-01       89         2.722012e-01       90         2.621064e-01       91         1.924755e-01       92         1.482430e-01       93         1.383850e-01       94         1.290760e-01       95         1.236353e-01       96         9.410520e-02       97         9.339823e-02       98         9.925700e-02       99         9.153637e-02      100         7.910479e-02      101         7.220205e-02      102         6.340915e-02      103         5.608557e-02      104         4.771820e-02  
+  error estimate = 0.0477182
+  iterations = 104
+  time used = 153.8 s (153.834 s realtime)
+Calculating efield
+Plotting to PNG-file "run_no_anode/epot_xy_no_anode.png"
+Plotting to PNG-file "run_no_anode/epot_xz_no_anode.png"
+Plotting to PNG-file "run_no_anode/epot_yz_x0_no_anode.png"
+Ending simulation
+  time used = 1252.16 s (656.091 s realtime)

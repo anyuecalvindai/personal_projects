@@ -1,0 +1,24 @@
+x axis: average potential at r=0 = -79915.4000 V
+ iteration  potential
+         1   -93136.1
+         2   -71587.8
+         3   -77624.5
+         4   -76620.4
+         5   -80608.2
+
+y axis: average potential at r=0 = -79915.4000 V
+ iteration  potential
+         1   -93136.1
+         2   -71587.8
+         3   -77624.5
+         4   -76620.4
+         5   -80608.2
+
+z axis: average potential at r=0 = -79915.4000 V
+ iteration  potential
+         1   -93136.1
+         2   -71587.8
+         3   -77624.5
+         4   -76620.4
+         5   -80608.2
+

@@ -4,5 +4,6 @@ run*/pout/
 run*/*.png
 run*/plots/*.png
 *.png
+*.docx
 .claude/settings.local.json
 
