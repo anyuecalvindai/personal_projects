@@ -6,4 +6,4 @@ run*/plots/*.png
 *.png
 *.docx
 .claude/settings.local.json
-
+CONTEXT_HANDOFF.md
