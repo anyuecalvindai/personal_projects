@@ -154,12 +154,12 @@ def make_radial_overlay(runs, out_png, axis="z"):
         ax.plot(d["r"], d["potential"], color=color,
                 label=f"{fmt_current(I_A)} (K={K:.4g})", linewidth=1.6)
         plotted += 1
-    ax.axvline(x=0.005, color="r", linestyle=":", linewidth=0.8,
+    ax.axvline(x=0.005, color="r", linestyle=":", linewidth=2.0,
                label="cathode r=5mm")
-    ax.axvline(x=-0.005, color="r", linestyle=":", linewidth=0.8)
-    ax.axvline(x=0.01995, color="b", linestyle=":", linewidth=0.8,
+    ax.axvline(x=-0.005, color="r", linestyle=":", linewidth=2.0)
+    ax.axvline(x=0.01995, color="b", linestyle=":", linewidth=2.0,
                label="anode r=19.95mm")
-    ax.axvline(x=-0.01995, color="b", linestyle=":", linewidth=0.8)
+    ax.axvline(x=-0.01995, color="b", linestyle=":", linewidth=2.0)
     ax.set_xlabel("r (m)")
     ax.set_ylabel("potential (V)")
     ax.set_title(f"Radial Potential Profile - {AXIS_LABELS[axis]} - "

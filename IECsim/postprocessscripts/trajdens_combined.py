@@ -13,7 +13,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from PIL import Image
 
-run = 'run_io_10mA/'
+run = 'run_e_anode_10A/'
 plots_dir = run + 'plots/'
 os.makedirs(plots_dir, exist_ok=True)
 

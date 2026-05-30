@@ -4,7 +4,7 @@ import re
 import pandas as pd
 import matplotlib.pyplot as plt
 
-run = 'run_ns_25kV_10A/'
+run = 'run_e_anode_10A/'
 plots = run + 'plots/'
 os.makedirs(plots, exist_ok=True)
 
